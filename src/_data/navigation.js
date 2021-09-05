@@ -1,4 +1,6 @@
+const pathPrefix = "terry-script-site";
+
 module.exports = [
-  { name: 'Home', route: '/' },
-  { name: 'About', route: '/about/' },
-]
+  { name: "Home", route: `/${pathPrefix}/` },
+  { name: "About", route: `/${pathPrefix}/about/` },
+];
