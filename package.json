@@ -6,13 +6,13 @@
   "scripts": {
     "build": "NODE_ENV=production npm-run-all clean -p build:*",
     "build:11ty": "eleventy --quiet",
-    "build:css": "tailwindcss -i src/_bundle/main.css -o dist/assets/main.bundle.css --minify --postcss",
-    "build:js": "esbuild src/_bundle/main.js --outfile=dist/assets/main.bundle.js --bundle",
-    "clean": "rm -rf dist",
+    "build:css": "tailwindcss -i src/_bundle/main.css -o docs/assets/main.bundle.css --minify --postcss",
+    "build:js": "esbuild src/_bundle/main.js --outfile=docs/assets/main.bundle.js --bundle",
+    "clean": "rm -rf docs",
     "dev": "NODE_ENV=development npm-run-all -p dev:*",
     "dev:11ty": "eleventy --serve --quiet",
-    "dev:css": "tailwindcss -i src/_bundle/main.css -o dist/assets/main.bundle.css --watch --postcss",
-    "dev:js": "esbuild src/_bundle/main.js --outfile=dist/assets/main.bundle.js --bundle --watch"
+    "dev:css": "tailwindcss -i src/_bundle/main.css -o docs/assets/main.bundle.css --watch --postcss",
+    "dev:js": "esbuild src/_bundle/main.js --outfile=docs/assets/main.bundle.js --bundle --watch"
   },
   "repository": {
     "type": "git",
