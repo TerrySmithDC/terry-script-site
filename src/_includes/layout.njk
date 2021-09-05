@@ -8,8 +8,19 @@
   <script src="{{ "/assets/main.bundle.js" | url | bust }}" defer></script>
   <title>{{ title }} | Terry Script</title>
   {% block head %}{% endblock %}
+  {% if env.prodMode %}
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-M4QKVMQ');</script>
+  {% endif %}
 </head>
 <body class="flex flex-col gap-8 {{ 'debug-screens' if env.devMode }}">
+  {% if env.prodMode %}
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QKVMQ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  {% endif %}
   {% include 'header.njk' %}
   {% block body %}
     <div class="container">
