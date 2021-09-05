@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Some developers site using some tech that looked interesting.">
-  <link rel="stylesheet" href="/assets/main.bundle.css">
-  <script src="/assets/main.bundle.js" defer></script>
+  <meta name="description" content="Terry Smith's personal site, lead developer @codecov.">
+  <link rel="stylesheet" href="{{ "/assets/main.bundle.css" | url | bust }}">
+  <script src=href="{{ "/assets/main.bundle.js" | url | bust }}" defer></script>
   <title>{{ title }} | Terry Script</title>
   {% block head %}{% endblock %}
 </head>
