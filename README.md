@@ -1,18 +1,11 @@
-# The TEA Stack
+# Terry Script website
 
-Welcome to the shortest stack out there. This stack combines Tailwind CSS, Eleventy, and Alpine.js to make static site authoring easy and minimal!
+I've been wanting to have a place to throw up stupid experiments for ages. By making this public I'm hoping it'll incentivize me to finish a site and actually throwing up my deep dives instead of procrastinating putting anything online and having it be lost to my hard drives. _knock on wood_
 
-There are some other goodies in here, but they change so often that it's probably not worth including here, just check the `package.json` file!
+For the first bit I'm going to be setting up this site.
 
-## Getting Started
+Currently the site is using the following:
 
-Just run the usual commands and peep the `package.json` file to see the available scripts and packages.
-
-For the lazy:
-
-- `npm i` to build that big ol' `node_modules` folder
-- `npm run dev` to boot up that dev server and start building
-- `npm run build` when you're ready to build a production bundle
-
-**Bonus**
-`npm run build && npx serve dist` will boot up a local server of your production site!
+- Tailwind
+- 11ty
+- Alpine (I dont know if I'll use it but it's here if I want it)
