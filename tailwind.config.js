@@ -1,10 +1,10 @@
 module.exports = {
   mode: "jit",
   darkMode: false,
+  corePlugins: {
+    container: false,
+  },
   theme: {
-    container: {
-      center: true,
-    },
     debugScreens: {
       position: ["bottom", "right"],
     },

@@ -18,10 +18,39 @@
   }
 
   h1 {
-    @apply first-letter:text-9xl text-8xl mb-4;
+    @apply first-letter:text-6xl text-5xl md:first-letter:text-9xl md:text-8xl mb-16 md:mb-8;
+  }
+
+  p {
+    @apply mb-5 leading-snug;
   }
 
   a {
     @apply no-underline hover:underline;
+  }
+
+  article {
+    @apply md:pl-28;
+  }
+
+  .container {
+    @apply md:max-w-3xl xl:max-w-4xl 2xl:max-w-7xl md:mx-auto px-10 lg:px-0 pt-16 md:pt-48;
+  }
+
+  nav {
+    @apply sticky md:fixed inset-0 md:inset-x-0 flex md:flex-col-reverse justify-center items-center w-full md:w-28 h-28 md:h-full gap-4 md:gap-10 bg-white border-r-0 md:border-r border-b md:border-b-0 border-solid border-gray-200 z-10;
+  }
+
+  nav a {
+    @apply transform md:-rotate-90;
+  }
+
+  /* Playing around with the golden ratio */
+  .goldx {
+    @apply grid grid-cols-1 md:grid-cols-3;
+  }
+
+  .goldy {
+    @apply grid grid-cols-1;
   }
 }

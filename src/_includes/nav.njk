@@ -1,5 +1,4 @@
-<nav class="bg-blue-200">
-  <div class="container py-4 space-x-2">
+<nav>
     {% for item in navigation %}
       <a
         class="{{ 'font-black' if page.url == item.route }}"
@@ -8,5 +7,4 @@
         {{ item.name }}
       </a>
     {% endfor %}
-  </div>
 </nav>

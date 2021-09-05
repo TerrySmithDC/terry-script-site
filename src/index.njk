@@ -4,8 +4,25 @@
 {% extends "layout.njk" %}
 
 {% block body %}
-  <main class="container py-8">
-    <h1>This is the {{ title | lower }} page.</h1>
-    <p>Test test</p>
-  </main>
+<section class="container min-h-screen">
+  <h1>This is the {{ title | lower }} page.</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.</p>
+</section>
+<section class="goldx min-h-screen">
+  <div class="col-span-2 p-10 sm:p-12 lg:p-28 bg-white border-t border-solid border-gray-200">
+    <h1>Another section</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.</p>
+  </div>
+  <div class="goldy">
+    <div class="row-span-2 bg-indigo-100"></div>
+    <div class="goldx bg-indigo-100">
+      {# <div class="goldy bg-indigo-100">
+        <div class="bg-white"></div>
+        <div class="row-span-2"></div>
+      </div> #}
+      <div class="bg-white"></div>
+      <div class="col-span-2"></div>
+    </div>
+  </div>
+</section>
 {% endblock %}

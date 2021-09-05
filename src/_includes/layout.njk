@@ -16,16 +16,16 @@
   })(window,document,'script','dataLayer','GTM-M4QKVMQ');</script>
   {% endif %}
 </head>
-<body class="flex flex-col gap-8 {{ 'debug-screens' if env.devMode }}">
+<body class="{{ 'debug-screens' if env.devMode }}">
   {% if env.prodMode %}
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QKVMQ"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   {% endif %}
-  {% include 'header.njk' %}
-  {% block body %}
-    <div class="container">
-      {{ content | safe }}
-    </div>
-  {% endblock %}
+  {% include 'nav.njk' %}
+  <article>
+    {% block body %}
+        {{ content | safe }}
+    {% endblock %}
+  </article>
 </body>
 </html>
