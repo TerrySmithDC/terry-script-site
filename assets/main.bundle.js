@@ -2269,12 +2269,17 @@ Expression: "${expression}"
     });
   }
   var isDeferringHandlers = false;
-  var directiveHandlerStack = [];
+  var directiveHandlerStacks = new Map();
+  var currentHandlerStackKey = Symbol();
   function deferHandlingDirectives(callback) {
     isDeferringHandlers = true;
+    let key = Symbol();
+    currentHandlerStackKey = key;
+    directiveHandlerStacks.set(key, []);
     let flushHandlers = () => {
-      while (directiveHandlerStack.length)
-        directiveHandlerStack.shift()();
+      while (directiveHandlerStacks.get(key).length)
+        directiveHandlerStacks.get(key).shift()();
+      directiveHandlerStacks.delete(key);
     };
     let stopDeferring = () => {
       isDeferringHandlers = false;
@@ -2305,7 +2310,7 @@ Expression: "${expression}"
         return;
       handler3.inline && handler3.inline(el, directive2, utilities);
       handler3 = handler3.bind(handler3, el, directive2, utilities);
-      isDeferringHandlers ? directiveHandlerStack.push(handler3) : handler3();
+      isDeferringHandlers ? directiveHandlerStacks.get(currentHandlerStackKey).push(handler3) : handler3();
     };
     fullHandler.runCleanups = doCleanup;
     return fullHandler;
@@ -2424,20 +2429,29 @@ Expression: "${expression}"
     onAttributesAdded((el, attrs) => {
       directives(el, attrs).forEach((handle) => handle());
     });
-    let outNestedComponents = (el) => !closestRoot(el.parentNode || closestRoot(el));
-    Array.from(document.querySelectorAll(rootSelectors())).filter(outNestedComponents).forEach((el) => {
+    let outNestedComponents = (el) => !closestRoot(el.parentElement);
+    Array.from(document.querySelectorAll(allSelectors())).filter(outNestedComponents).forEach((el) => {
       initTree(el);
     });
     dispatch(document, "alpine:initialized");
   }
   var rootSelectorCallbacks = [];
+  var initSelectorCallbacks = [];
   function rootSelectors() {
     return rootSelectorCallbacks.map((fn) => fn());
+  }
+  function allSelectors() {
+    return rootSelectorCallbacks.concat(initSelectorCallbacks).map((fn) => fn());
   }
   function addRootSelector(selectorCallback) {
     rootSelectorCallbacks.push(selectorCallback);
   }
+  function addInitSelector(selectorCallback) {
+    initSelectorCallbacks.push(selectorCallback);
+  }
   function closestRoot(el) {
+    if (!el)
+      return;
     if (rootSelectors().some((selector) => el.matches(selector)))
       return el;
     if (!el.parentElement)
@@ -2518,8 +2532,18 @@ Expression: "${expression}"
   function data(name, callback) {
     datas[name] = callback;
   }
-  function getNamedDataProvider(name) {
-    return datas[name];
+  function injectDataProviders(obj, context) {
+    Object.entries(datas).forEach(([name, callback]) => {
+      Object.defineProperty(obj, name, {
+        get() {
+          return (...args) => {
+            return callback.bind(context)(...args);
+          };
+        },
+        enumerable: false
+      });
+    });
+    return obj;
   }
   var Alpine = {
     get reactive() {
@@ -2534,7 +2558,7 @@ Expression: "${expression}"
     get raw() {
       return raw;
     },
-    version: "3.1.0",
+    version: "3.3.1",
     disableEffectScheduling,
     setReactivityEngine,
     addRootSelector,
@@ -2546,6 +2570,7 @@ Expression: "${expression}"
     mutateDom,
     directive,
     evaluate,
+    initTree,
     nextTick,
     prefix: setPrefix,
     plugin,
@@ -2566,13 +2591,19 @@ Expression: "${expression}"
     effect(() => evaluate2((value) => {
       let div = document.createElement("div");
       div.dataset.throwAway = value;
-      if (!firstTime)
-        callback(value, oldValue);
-      oldValue = value;
+      if (!firstTime) {
+        queueMicrotask(() => {
+          callback(value, oldValue);
+          oldValue = value;
+        });
+      } else {
+        oldValue = value;
+      }
       firstTime = false;
     }));
   });
   magic("store", getStores);
+  magic("root", (el) => closestRoot(el));
   magic("refs", (el) => closestRoot(el)._x_refs || {});
   magic("el", (el) => el);
   function setClasses(el, value) {
@@ -2580,6 +2611,8 @@ Expression: "${expression}"
       return setClassesFromString(el, value.join(" "));
     } else if (typeof value === "object" && value !== null) {
       return setClassesFromObject(el, value);
+    } else if (typeof value === "function") {
+      return setClasses(el, value());
     }
     return setClassesFromString(el, value);
   }
@@ -2628,7 +2661,7 @@ Expression: "${expression}"
     let previousStyles = {};
     Object.entries(value).forEach(([key, value2]) => {
       previousStyles[key] = el.style[key];
-      el.style[key] = value2;
+      el.style.setProperty(kebabCase(key), value2);
     });
     setTimeout(() => {
       if (el.style.length === 0) {
@@ -2646,6 +2679,9 @@ Expression: "${expression}"
       el.setAttribute("style", cache);
     };
   }
+  function kebabCase(subject) {
+    return subject.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+  }
   function once(callback, fallback = () => {
   }) {
     let called = false;
@@ -2658,7 +2694,9 @@ Expression: "${expression}"
       }
     };
   }
-  directive("transition", (el, { value, modifiers, expression }) => {
+  directive("transition", (el, { value, modifiers, expression }, { evaluate: evaluate2 }) => {
+    if (typeof expression === "function")
+      expression = evaluate2(expression);
     if (!expression) {
       registerTransitionsFromHelper(el, modifiers, value);
     } else {
@@ -3061,6 +3099,8 @@ Expression: "${expression}"
     let handler3 = (e) => callback(e);
     let options = {};
     let wrapHandler = (callback2, wrapper) => (e) => wrapper(callback2, e);
+    if (modifiers.includes("dot"))
+      event = dotSyntax(event);
     if (modifiers.includes("camel"))
       event = camelCase2(event);
     if (modifiers.includes("passive"))
@@ -3122,6 +3162,9 @@ Expression: "${expression}"
       listenerTarget.removeEventListener(event, handler3, options);
     };
   }
+  function dotSyntax(subject) {
+    return subject.replace(/-/g, ".");
+  }
   function camelCase2(subject) {
     return subject.toLowerCase().replace(/-(\w)/g, (match, char) => char.toUpperCase());
   }
@@ -3151,7 +3194,7 @@ Expression: "${expression}"
   function isNumeric(subject) {
     return !Array.isArray(subject) && !isNaN(subject);
   }
-  function kebabCase(subject) {
+  function kebabCase2(subject) {
     return subject.replace(/([a-z])([A-Z])/g, "$1-$2").replace(/[_\s]/, "-").toLowerCase();
   }
   function isKeyEvent(event) {
@@ -3167,7 +3210,7 @@ Expression: "${expression}"
     }
     if (keyModifiers.length === 0)
       return false;
-    if (keyModifiers.length === 1 && keyModifiers[0] === keyToModifier(e.key))
+    if (keyModifiers.length === 1 && keyToModifiers(e.key).includes(keyModifiers[0]))
       return false;
     const systemKeyModifiers = ["ctrl", "shift", "alt", "meta", "cmd", "super"];
     const selectedSystemKeyModifiers = systemKeyModifiers.filter((modifier) => keyModifiers.includes(modifier));
@@ -3179,22 +3222,35 @@ Expression: "${expression}"
         return e[`${modifier}Key`];
       });
       if (activelyPressedKeyModifiers.length === selectedSystemKeyModifiers.length) {
-        if (keyModifiers[0] === keyToModifier(e.key))
+        if (keyToModifiers(e.key).includes(keyModifiers[0]))
           return false;
       }
     }
     return true;
   }
-  function keyToModifier(key) {
-    switch (key) {
-      case "/":
-        return "slash";
-      case " ":
-      case "Spacebar":
-        return "space";
-      default:
-        return key && kebabCase(key);
-    }
+  function keyToModifiers(key) {
+    if (!key)
+      return [];
+    key = kebabCase2(key);
+    let modifierToKeyMap = {
+      ctrl: "control",
+      slash: "/",
+      space: "-",
+      spacebar: "-",
+      cmd: "meta",
+      esc: "escape",
+      up: "arrow-up",
+      down: "arrow-down",
+      left: "arrow-left",
+      right: "arrow-right",
+      period: ".",
+      equal: "="
+    };
+    modifierToKeyMap[key] = key;
+    return Object.keys(modifierToKeyMap).map((modifier) => {
+      if (modifierToKeyMap[modifier] === key)
+        return modifier;
+    }).filter((modifier) => modifier);
   }
   directive("model", (el, { modifiers, expression }, { effect: effect3, cleanup }) => {
     let evaluate2 = evaluateLater(el, expression);
@@ -3235,7 +3291,7 @@ Expression: "${expression}"
     return (event, currentValue) => {
       return mutateDom(() => {
         if (event instanceof CustomEvent && event.detail !== void 0) {
-          return event.detail;
+          return event.detail || event.target.value;
         } else if (el.type === "checkbox") {
           if (Array.isArray(currentValue)) {
             let newValue = modifiers.includes("number") ? safeParseNumber(event.target.value) : event.target.value;
@@ -3268,8 +3324,8 @@ Expression: "${expression}"
     return !Array.isArray(subject) && !isNaN(subject);
   }
   directive("cloak", (el) => queueMicrotask(() => mutateDom(() => el.removeAttribute(prefix("cloak")))));
-  addRootSelector(() => `[${prefix("init")}]`);
-  directive("init", skipDuringClone((el, { expression }) => evaluate(el, expression, {}, false)));
+  addInitSelector(() => `[${prefix("init")}]`);
+  directive("init", skipDuringClone((el, { expression }) => !!expression.trim() && evaluate(el, expression, {}, false)));
   directive("text", (el, { expression }, { effect: effect3, evaluateLater: evaluateLater2 }) => {
     let evaluate2 = evaluateLater2(expression);
     effect3(() => {
@@ -3284,9 +3340,7 @@ Expression: "${expression}"
     let evaluate2 = evaluateLater2(expression);
     effect3(() => {
       evaluate2((value) => {
-        mutateDom(() => {
-          el.innerHTML = value;
-        });
+        el.innerHTML = value;
       });
     });
   });
@@ -3324,23 +3378,19 @@ Expression: "${expression}"
   addRootSelector(() => `[${prefix("data")}]`);
   directive("data", skipDuringClone((el, { expression }, { cleanup }) => {
     expression = expression === "" ? "{}" : expression;
-    let dataProvider = getNamedDataProvider(expression);
-    let data2 = {};
-    if (dataProvider) {
-      let magics2 = injectMagics({}, el);
-      data2 = dataProvider.bind(magics2)();
-    } else {
-      data2 = evaluate(el, expression);
-    }
+    let magicContext = {};
+    injectMagics(magicContext, el);
+    let dataProviderContext = {};
+    injectDataProviders(dataProviderContext, magicContext);
+    let data2 = evaluate(el, expression, { scope: dataProviderContext });
     injectMagics(data2, el);
     let reactiveData = reactive(data2);
     initInterceptors(reactiveData);
     let undo = addScopeToNode(el, reactiveData);
-    if (reactiveData["init"])
-      reactiveData["init"]();
+    reactiveData["init"] && evaluate(el, reactiveData["init"]);
     cleanup(() => {
       undo();
-      reactiveData["destroy"] && reactiveData["destroy"]();
+      reactiveData["destroy"] && evaluate(el, reactiveData["destroy"]);
     });
   }));
   directive("show", (el, { modifiers, expression }, { effect: effect3 }) => {
@@ -3397,6 +3447,8 @@ Expression: "${expression}"
       if (isNumeric3(items) && items >= 0) {
         items = Array.from(Array(items).keys(), (i) => i + 1);
       }
+      if (items === void 0)
+        items = [];
       let lookup = el._x_lookup;
       let prevKeys = el._x_prevKeys;
       let scopes = [];
@@ -3468,10 +3520,13 @@ Expression: "${expression}"
         let key = keys[index];
         let clone2 = document.importNode(templateEl.content, true).firstElementChild;
         addScopeToNode(clone2, reactive(scope), templateEl);
-        initTree(clone2);
         mutateDom(() => {
           lastEl.after(clone2);
+          initTree(clone2);
         });
+        if (typeof key === "object") {
+          warn("x-for key cannot be an object, it must be a string or an integer", templateEl);
+        }
         lookup[key] = clone2;
       }
       for (let i = 0; i < sames.length; i++) {
@@ -3509,6 +3564,11 @@ Expression: "${expression}"
       names.forEach((name, i) => {
         scopeVariables[name] = item[i];
       });
+    } else if (/^\{.*\}$/.test(iteratorNames.item) && !Array.isArray(item) && typeof item === "object") {
+      let names = iteratorNames.item.replace("{", "").replace("}", "").split(",").map((i) => i.trim());
+      names.forEach((name) => {
+        scopeVariables[name] = item[name];
+      });
     } else {
       scopeVariables[iteratorNames.item] = item;
     }
@@ -3538,8 +3598,10 @@ Expression: "${expression}"
         return el._x_currentIfEl;
       let clone2 = el.content.cloneNode(true).firstElementChild;
       addScopeToNode(clone2, {}, el);
-      initTree(clone2);
-      mutateDom(() => el.after(clone2));
+      mutateDom(() => {
+        el.after(clone2);
+        initTree(clone2);
+      });
       el._x_currentIfEl = clone2;
       el._x_undoIf = () => {
         clone2.remove();
@@ -3547,7 +3609,12 @@ Expression: "${expression}"
       };
       return clone2;
     };
-    let hide = () => el._x_undoIf?.() || delete el._x_undoIf;
+    let hide = () => {
+      if (!el._x_undoIf)
+        return;
+      el._x_undoIf();
+      delete el._x_undoIf;
+    };
     effect3(() => evaluate2((value) => {
       value ? show() : hide();
     }));
