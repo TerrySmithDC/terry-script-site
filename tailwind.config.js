@@ -1,20 +1,20 @@
 module.exports = {
-  mode: 'jit',
+  mode: "jit",
   darkMode: false,
   theme: {
     container: {
       center: true,
-      padding: '1.5rem',
     },
     debugScreens: {
-      position: ['bottom', 'right'],
+      position: ["bottom", "right"],
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        serif: ["Raleway"],
+        sans: ['"Playfair Display"'],
+      },
+    },
   },
-  plugins: [
-    require('@tailwindcss/forms'),
-    require('@tailwindcss/typography'),
-    require('tailwindcss-debug-screens'),
-  ],
-  purge: ['./src/**/*.{js,md,njk,svg}'],
-}
+  plugins: [require("tailwindcss-debug-screens")],
+  purge: ["./src/**/*.{js,md,njk,svg}"],
+};

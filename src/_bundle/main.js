@@ -1,5 +1,4 @@
 import Alpine from 'alpinejs'
-import 'htmx.org'
 import 'lazysizes'
 
 window.Alpine = Alpine
