@@ -30,16 +30,16 @@
   },
   "homepage": "https://github.com/terrysmithdc/terry-script-site#readme",
   "dependencies": {
-    "alpinejs": "^3.1.0",
+    "alpinejs": "^3.3.1",
     "lazysizes": "^5.3.0"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.12.1",
-    "esbuild": "^0.12.9",
+    "esbuild": "^0.12.25",
     "npm-run-all": "^4.1.5",
     "postcss-font-magician": "^3.0.0",
     "postcss-import": "^14.0.0",
-    "tailwindcss": "^2.2.2",
-    "tailwindcss-debug-screens": "^1.1.0"
+    "tailwindcss": "^2.2.9",
+    "tailwindcss-debug-screens": "^2.1.0"
   }
 }
