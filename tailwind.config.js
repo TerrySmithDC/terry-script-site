@@ -1,3 +1,19 @@
+const plugin = require("tailwindcss/plugin");
+
+function calculateClamp(min, max, unit = "rem") {
+  // https://css-tricks.com/linearly-scale-font-size-with-css-clamp-based-on-the-viewport/
+
+  const pixelsPerRem = 16;
+  const minW = 640 / pixelsPerRem; // responsive sm
+  const maxW = 1536 / pixelsPerRem; // responsive 2xl
+  const slope = (max - min) / (maxW - minW);
+  const yAxisIntersection = -minW * slope + min;
+
+  return `clamp(${min}${unit}, ${yAxisIntersection}rem + ${
+    slope * 100
+  }vw, ${max}${unit})`;
+}
+
 module.exports = {
   mode: "jit",
   darkMode: false,
@@ -15,20 +31,34 @@ module.exports = {
       },
       fontSize: {
         dynamic: [
-          "clamp(1.5rem, 2.5vw, 2rem)",
-          { lineHeight: "clamp(1.75rem, 2.5vw, 2.5rem)" },
+          calculateClamp(1, 2.5),
+          { lineHeight: calculateClamp(1.5, 3) },
+        ],
+        "dynamic-2xl": [
+          calculateClamp(1.5, 3),
+          { lineHeight: calculateClamp(1.75, 3.5) },
         ],
         "dynamic-5xl": [
-          "clamp(3.5rem, 10vw, 8rem)",
-          { lineHeight: "clamp(4rem, 10vw, 9rem)" },
+          calculateClamp(3, 5),
+          { lineHeight: calculateClamp(4, 11) },
         ],
         "dynamic-6xl": [
-          "clamp(5rem, 12vw, 12rem)",
-          { lineHeight: "clamp(4rem, 12vw, 9rem)" },
+          calculateClamp(3.5, 5.5),
+          { lineHeight: calculateClamp(4, 11) },
         ],
       },
     },
   },
-  plugins: [require("tailwindcss-debug-screens")],
+  plugins: [
+    require("tailwindcss-debug-screens"),
+    plugin(function ({ addUtilities, addComponents, e, prefix, config }) {
+      const textIndents = {
+        ".indent": {
+          "text-indent": calculateClamp(3, 5),
+        },
+      };
+      addUtilities(textIndents);
+    }),
+  ],
   purge: ["./src/**/*.{js,md,njk,svg}"],
 };
