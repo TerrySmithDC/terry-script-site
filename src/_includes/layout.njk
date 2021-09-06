@@ -16,12 +16,13 @@
   })(window,document,'script','dataLayer','GTM-M4QKVMQ');</script>
   {% endif %}
 </head>
-<body class="{{ 'debug-screens' if env.devMode }}">
+<body x-data="{ isOpen: false }" class="{{ 'debug-screens' if env.devMode }}" :class="! isOpen ? '': 'overflow-hidden'">
   {% if env.prodMode %}
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QKVMQ"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   {% endif %}
   {% include 'nav.njk' %}
+  {% include 'nav-open.njk' %}
   <article>
     {% block body %}
         {{ content | safe }}

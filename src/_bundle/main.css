@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply font-serif tracking-wider text-gray-900;
+    @apply font-sans tracking-wider text-gray-900;
   }
 
   h1,
@@ -14,11 +14,11 @@
   h5,
   ul,
   ol {
-    @apply font-sans mb-4;
+    @apply font-serif;
   }
 
   h1 {
-    @apply first-letter:text-dynamic-6xl text-dynamic-5xl tracking-tighter;
+    @apply first-letter:text-dynamic-6xl text-dynamic-5xl tracking-tight;
   }
 
   p {
@@ -34,21 +34,13 @@
   }
 
   article {
-    @apply py-28 md:pl-28;
-  }
-
-  nav {
-    @apply sticky md:fixed inset-0 md:inset-x-0 flex md:flex-col justify-center items-center w-full md:w-28 h-28 md:h-full text-xl md:text-2xl gap-4 md:gap-16 bg-white border-r-0 md:border-r border-b md:border-b-0 border-solid border-gray-200 z-10;
-  }
-
-  nav a {
-    @apply transform md:-rotate-90;
+    @apply md:pl-28;
   }
 }
 
 @layer components {
   .container {
-    @apply md:max-w-3xl xl:max-w-4xl 2xl:max-w-7xl md:mx-auto px-10 lg:px-0 md:pt-48;
+    @apply md:max-w-3xl xl:max-w-4xl 2xl:max-w-7xl md:mx-auto px-10 lg:px-0;
   }
 
   /* Playing around with the golden ratio */

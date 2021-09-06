@@ -1,0 +1,19 @@
+<nav 
+  class="fixed top-16 left-0 md:top-0 md:left-28 bottom-0 right-0 z-20 bg-white h-screen"
+  :class="! isOpen ? '': ''"
+  :hidden="!isOpen" id="nav-list"
+>
+  <h2 class="sr-only" id="nav-heading">Site navigation</h2>
+  <ul class="flex flex-col items-center md:flex-col gap-10 text-7xl md:text-9xl p-10 md:p-28">
+    {% for item in navigation %}
+      <li>
+        <a
+          class="{{ 'bg-clip-text text-transparent bg-gradient-to-tr from-gray-800 to-purple-800' if page.url == item.route }} {{'text-gray-800' if page.url != item.route }} font-sans"
+          href="{{ item.route }}"
+        >
+          {{ item.name }}
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>

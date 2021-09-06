@@ -26,14 +26,11 @@ module.exports = {
     },
     extend: {
       fontFamily: {
-        serif: ["Raleway"],
-        sans: ['"Playfair Display"'],
+        sans: ["Raleway"],
+        serif: ['"Playfair Display"'],
       },
       fontSize: {
-        dynamic: [
-          calculateClamp(1, 2.5),
-          { lineHeight: calculateClamp(1.5, 3) },
-        ],
+        dynamic: [calculateClamp(1, 2), { lineHeight: calculateClamp(1.5, 3) }],
         "dynamic-2xl": [
           calculateClamp(1.5, 3),
           { lineHeight: calculateClamp(1.75, 3.5) },
@@ -46,6 +43,9 @@ module.exports = {
           calculateClamp(3.5, 5.5),
           { lineHeight: calculateClamp(4, 11) },
         ],
+      },
+      inset: {
+        "-v-100": "100vh",
       },
     },
   },

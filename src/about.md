@@ -3,7 +3,7 @@ title: About
 layout: layout.njk
 ---
 
-<section class="container">
+<section class="container my-10 md:my-28">
 
 # This is the {{ title }} page.
 

@@ -4,25 +4,15 @@
 {% extends "layout.njk" %}
 
 {% block body %}
-<section class="container min-h-screen">
+<section class="container flex flex-col sm:justify-center min-h-screen mt-10 md:mt-0">
   <h1 class="first-letter:tracking-tighter bg-clip-text text-transparent bg-gradient-to-tr from-gray-800 to-purple-800">Hello, I'm Terry.</h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.</p>
 </section>
-<section class="goldx min-h-screen">
-  <div class="col-span-2 p-10 sm:p-12 lg:p-28 bg-white border-t border-solid border-gray-200">
+<section class="grid grid-cols-1 md:grid-cols-3 min-h-screen">
+  <div class="flex flex-col justify-center md:pl-28 col-span-3 md:col-span-2 p-10 md:p-0 bg-white border-t border-solid border-gray-200">
     <h1 class="first-letter:tracking-wide">Another section</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.</p>
   </div>
-  <div class="goldy bg-gradient-to-br from-purple-300 via-pink-400 to-red-400">
-    <div class="row-span-2"></div>
-    <div class="goldx">
-      {# <div class="goldy bg-indigo-100">
-        <div class="bg-white"></div>
-        <div class="row-span-2"></div>
-      </div> #}
-      <div class="bg-white"></div>
-      <div class="col-span-2"></div>
-    </div>
-  </div>
+  <div style="clip-path: polygon(0 0, 100% 0, 100% 100%, 39% 100%);" class="hidden md:block bg-gradient-to-br from-purple-300 via-pink-400 to-red-400"> </div>
 </section>
 {% endblock %}
