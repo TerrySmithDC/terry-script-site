@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Terry Smith's personal site, lead developer @codecov.">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1630879388302">
-  <script src="/assets/main.bundle.js?v=1630879388303" defer></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1630963888424">
+  <script src="/assets/main.bundle.js?v=1630963888424" defer></script>
   <title>Home | Terry Script</title>
   
   
@@ -16,48 +16,69 @@
   })(window,document,'script','dataLayer','GTM-M4QKVMQ');</script>
   
 </head>
-<body class="">
+<body x-data="{ isOpen: false }" class="" :class="! isOpen ? '': 'overflow-hidden'">
   
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QKVMQ"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   
-  <nav>
+  <header 
+  class="sticky md:fixed inset-0 md:inset-x-0 md:w-28 h-16 md:h-full flex md:flex-col justify-center md:justify-between items-center text-xl md:text-2xl bg-white border-r-0 md:border-r border-b md:border-b-0 border-solid border-gray-200 z-10"
+  :class="! isOpen ? '': ''"
+>
+  <div></div>
+  <span
+    class="cursor-pointer select-none text-4xl p-3 md:p-10 text-gray-500"
+    :aria-expanded="isOpen"
+    aria-controls="nav-list"
+    @click="isOpen = !isOpen"
+    x-text="isOpen ? '&#9932;' : '&#9776;'"
+  ></span>
+  <div class="hidden md:block">
     
-      <a
-        class="font-black"
-        href="/"
-      >
-        Home
-      </a>
+  </div>
+</header>
+
+  <nav 
+  class="fixed top-16 left-0 md:top-0 md:left-28 bottom-0 right-0 z-20 bg-white h-screen"
+  :class="! isOpen ? '': ''"
+  :hidden="!isOpen" id="nav-list"
+>
+  <h2 class="sr-only" id="nav-heading">Site navigation</h2>
+  <ul class="flex flex-col items-center md:flex-col gap-10 text-7xl md:text-9xl p-10 md:p-28">
     
-      <a
-        class=""
-        href="/about/"
-      >
-        About
-      </a>
+      <li>
+        <a
+          class="bg-clip-text text-transparent bg-gradient-to-tr from-gray-800 to-purple-800  font-sans"
+          href="/"
+        >
+          Home
+        </a>
+      </li>
     
+      <li>
+        <a
+          class=" text-gray-800 font-sans"
+          href="/about/"
+        >
+          About
+        </a>
+      </li>
+    
+  </ul>
 </nav>
 
   <article>
     
-<section class="container min-h-screen">
-  <h1 class="bg-clip-text text-transparent bg-gradient-to-tr from-gray-800 to-purple-800">Hello, I'm Terry.</h1>
+<section class="container flex flex-col sm:justify-center min-h-screen mt-10 md:mt-0">
+  <h1 class="first-letter:tracking-tighter bg-clip-text text-transparent bg-gradient-to-tr from-gray-800 to-purple-800">Hello, I'm Terry.</h1>
   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.</p>
 </section>
-<section class="goldx min-h-screen">
-  <div class="col-span-2 p-10 sm:p-12 lg:p-28 bg-white border-t border-solid border-gray-200">
-    <h1>Another section</h1>
+<section class="grid grid-cols-1 md:grid-cols-3 min-h-screen">
+  <div class="flex flex-col justify-center md:pl-28 col-span-3 md:col-span-2 p-10 md:p-0 bg-white border-t border-solid border-gray-200">
+    <h1 class="first-letter:tracking-wide">Another section</h1>
     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.</p>
   </div>
-  <div class="goldy bg-gradient-to-br from-purple-300 via-pink-400 to-red-400">
-    <div class="row-span-2"></div>
-    <div class="goldx">
-      
-      <div class="bg-white"></div>
-      <div class="col-span-2"></div>
-    </div>
-  </div>
+  <div style="clip-path: polygon(0 0, 100% 0, 100% 100%, 39% 100%);" class="hidden md:block bg-gradient-to-br from-purple-300 via-pink-400 to-red-400"> </div>
 </section>
 
   </article>
