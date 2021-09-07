@@ -9,3 +9,5 @@ Currently the site is using the following:
 - Tailwind
 - 11ty
 - Alpine.js
+
+Dev goals: Full accessibility, crazy fast, get a strong design and then animate/polish/add interesting interactions.
