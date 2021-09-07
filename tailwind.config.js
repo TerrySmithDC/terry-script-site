@@ -60,7 +60,7 @@ module.exports = {
         ],
         "dynamic-6xl": [
           calculateClamp(3.75, 8),
-          { lineHeight: calculateClamp(5, 7.5) },
+          { lineHeight: calculateClamp(5, 10) },
         ],
         "dynamic-7xl": [
           calculateClamp(4.5, 10),
