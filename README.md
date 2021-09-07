@@ -8,4 +8,4 @@ Currently the site is using the following:
 
 - Tailwind
 - 11ty
-- Alpine (I dont know if I'll use it but it's here if I want it)
+- Alpine.js
