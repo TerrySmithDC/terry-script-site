@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Terry Smith's personal site, lead developer @codecov.">
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1630984108421">
+  <script src="/assets/main.bundle.js?v=1630984108421" defer></script>
+  <title>Test | Terry Script</title>
+  
+  
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-M4QKVMQ');</script>
+  
+</head>
+<body x-data="{ isOpen: false }" class=" bg-gradient-radial-custom" :class="! isOpen ? '': 'overflow-hidden'">
+  
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QKVMQ"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  
+  <header 
+  class="sticky md:fixed inset-0 md:inset-x-0 md:w-28 h-16 md:h-full flex md:flex-col justify-center md:justify-between items-center text-xl md:text-2xl bg-white border-r-0 md:border-r border-b md:border-b-0 border-solid border-blue-100 z-10"
+  :class="! isOpen ? '': ''"
+>
+  <div></div>
+  <span
+    class="cursor-pointer select-none text-4xl p-3 md:p-10 text-blue-400"
+    :aria-expanded="isOpen"
+    aria-controls="nav-list"
+    @click="isOpen = !isOpen"
+    x-text="isOpen ? '&#9932;' : '&#9776;'"
+  ></span>
+  <div class="hidden md:flex flex-wrap justify-between gap-2 m-4">
+    <div class="bg-blue-900 h-4 w-4"></div>
+    <div class="h-4 w-4"></div>
+    <div class="h-4 w-4"></div>
+    <div class="bg-blue-600 h-4 w-4"></div>
+    <div class="bg-blue-900 h-4 w-4"></div>
+    <div class="bg-blue-600 h-4 w-4"></div>
+  </div>
+</header>
+
+  <nav 
+  class="fixed top-16 left-0 md:top-0 md:left-28 bottom-0 right-0 z-20 bg-white h-screen"
+  :class="! isOpen ? '': 'md:flex md:justify-around md:flex-col'"
+  :hidden="!isOpen" id="nav-list"
+>
+  <h2 class="sr-only" id="nav-heading">Site navigation</h2>
+  <ul class="flex flex-col md:flex-col text-7xl md:text-9xl px-10 md:px-28 text-center divide-dotted divide-y-4 divide-blue-100">
+    
+      <li class="flex w-full">
+        <a
+          class=" font-sans w-screen py-10 hover:no-underline hover:italic"
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+    
+      <li class="flex w-full">
+        <a
+          class="bg-clip-text text-transparent bg-gradient-to-tr to-purple-500 from-blue-200 font-sans w-screen py-10 hover:no-underline hover:italic"
+          href="/test/"
+        >
+          Test
+        </a>
+      </li>
+    
+  </ul>
+</nav>
+
+  <article>
+    
+        <section class="container my-10 md:my-28">
+<h1>This is the Test page.</h1>
+<h2>This is the Test page.</h2>
+<h3>This is the Test page.</h3>
+<h4>This is the Test page.</h4>
+<h5>This is the Test page.</h5>
+<h6>This is the Test page.</h6>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.</p>
+<h5>Text styles:</h5>
+<p>I just love <strong>bold text</strong>.</p>
+<p>Italicized text is the <em>cat's meow</em>.</p>
+<p>This text is <strong><em>really important</em></strong>.</p>
+<h5>Blockquotes</h5>
+<blockquote>
+<p>Dorothy followed her through many of the beautiful rooms in her castle.</p>
+</blockquote>
+<blockquote>
+<p>Dorothy followed her through many of the beautiful rooms in her castle.</p>
+<p>The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.</p>
+</blockquote>
+<blockquote>
+<p>Dorothy followed her through many of the beautiful rooms in her castle.</p>
+<blockquote>
+<p>The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.</p>
+</blockquote>
+</blockquote>
+<blockquote>
+<h6>The quarterly results look great!</h6>
+<ul>
+<li>
+<p>Revenue was off the chart.</p>
+</li>
+<li>
+<p>Profits were higher than ever.</p>
+<p><em>Everything</em> is going according to <strong>plan</strong>.</p>
+</li>
+</ul>
+</blockquote>
+<h5>Lists</h5>
+<h6>Ordered:</h6>
+<ol>
+<li>First item</li>
+<li>Second item</li>
+<li>Third item
+<ol>
+<li>Indented item</li>
+<li>Indented item</li>
+</ol>
+</li>
+<li>Fourth item</li>
+</ol>
+<h6>Unordered:</h6>
+<ul>
+<li>First item</li>
+<li>Second item</li>
+<li>Third item
+<ul>
+<li>Indented item</li>
+<li>Indented item</li>
+</ul>
+</li>
+<li>Fourth item</li>
+</ul>
+<h5>Code</h5>
+<p><code>const foo = 'bar'</code></p>
+<h5>Misc</h5>
+<hr>
+<p>My favorite search engine is <a href="https://duckduckgo.com">Duck Duck Go</a>.</p>
+<h5>TODO...</h5>
+<p><button>I do nothing!</button></p>
+<p><button disabled>I 'm disabled'!</button></p>
+<input placeholder="Input" />
+</section>
+
+    
+  </article>
+</body>
+</html>
