@@ -16,7 +16,7 @@
   })(window,document,'script','dataLayer','GTM-M4QKVMQ');</script>
   {% endif %}
 </head>
-<body x-data="{ isOpen: false }" class="{{ 'debug-screens' if env.devMode }}" :class="! isOpen ? '': 'overflow-hidden'">
+<body x-data="{ isOpen: false }" class="{{ 'debug-screens' if env.devMode }} bg-gradient-radial-custom" :class="! isOpen ? '': 'overflow-hidden'">
   {% if env.prodMode %}
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QKVMQ"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>

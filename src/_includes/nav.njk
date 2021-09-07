@@ -1,16 +1,21 @@
 <header 
-  class="sticky md:fixed inset-0 md:inset-x-0 md:w-28 h-16 md:h-full flex md:flex-col justify-center md:justify-between items-center text-xl md:text-2xl bg-white border-r-0 md:border-r border-b md:border-b-0 border-solid border-gray-200 z-10"
+  class="sticky md:fixed inset-0 md:inset-x-0 md:w-28 h-16 md:h-full flex md:flex-col justify-center md:justify-between items-center text-xl md:text-2xl bg-white border-r-0 md:border-r border-b md:border-b-0 border-solid border-blue-100 z-10"
   :class="! isOpen ? '': ''"
 >
   <div></div>
   <span
-    class="cursor-pointer select-none text-4xl p-3 md:p-10 text-gray-500"
+    class="cursor-pointer select-none text-4xl p-3 md:p-10 text-blue-400"
     :aria-expanded="isOpen"
     aria-controls="nav-list"
     @click="isOpen = !isOpen"
     x-text="isOpen ? '&#9932;' : '&#9776;'"
   ></span>
-  <div class="hidden md:block">
-    {# Social links #}
+  <div class="hidden md:flex flex-wrap justify-between gap-2 m-4">
+    <div class="bg-blue-900 h-4 w-4"></div>
+    <div class="h-4 w-4"></div>
+    <div class="h-4 w-4"></div>
+    <div class="bg-blue-600 h-4 w-4"></div>
+    <div class="bg-blue-900 h-4 w-4"></div>
+    <div class="bg-blue-600 h-4 w-4"></div>
   </div>
 </header>

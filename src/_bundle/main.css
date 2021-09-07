@@ -4,7 +4,7 @@
 
 @layer base {
   body {
-    @apply font-sans tracking-wider text-gray-900;
+    @apply font-sans text-dynamic tracking-wider text-blue-800;
   }
 
   h1,
@@ -12,43 +12,129 @@
   h3,
   h4,
   h5,
+  h6,
   ul,
   ol {
     @apply font-serif;
   }
 
   h1 {
+    @apply first-letter:text-dynamic-7xl text-dynamic-6xl tracking-tight;
+  }
+
+  h2 {
     @apply first-letter:text-dynamic-6xl text-dynamic-5xl tracking-tight;
   }
 
-  p {
-    @apply text-dynamic;
+  h3 {
+    @apply first-letter:text-dynamic-5xl text-dynamic-4xl tracking-tight;
   }
 
-  p + p {
+  h4 {
+    @apply first-letter:text-dynamic-4xl text-dynamic-3xl tracking-tight;
+  }
+
+  h5 {
+    @apply first-letter:text-dynamic-3xl text-dynamic-2xl tracking-tight;
+  }
+
+  h6 {
+    @apply first-letter:text-dynamic-2xl text-dynamic-xl tracking-tight;
+  }
+
+  h7 {
+    @apply first-letter:text-dynamic-xl text-dynamic-lg tracking-tight;
+  }
+
+  .p-indent + p {
     @apply indent;
   }
 
   a {
-    @apply no-underline hover:underline;
+    @apply font-bold no-underline hover:underline;
   }
 
   article {
     @apply md:pl-28;
   }
+
+  blockquote {
+    @apply border-solid border-blue-100 border-l-8 px-5 my-4;
+  }
+
+  ol,
+  ul {
+    @apply pl-6;
+  }
+
+  ol {
+    counter-reset: listy 0;
+  }
+
+  ol li {
+    counter-increment: listy 1;
+  }
+
+  ol li:before {
+    content: counters(listy, ".");
+
+    @apply font-bold font-sans text-current text-dynamic pr-5 align-top;
+  }
+
+  ul {
+    @apply list-inside list-disc;
+  }
+
+  nav ul {
+    @apply list-none;
+  }
+
+  hr {
+    @apply my-4;
+  }
+
+  button,
+  input {
+    @apply focus:outline-none m-1 focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 p-2 border-2 border-solid border-blue-300 text-blue-700 rounded-md placeholder-blue-500;
+  }
 }
 
 @layer components {
+  .bg-gradient-radial-custom {
+    background-image: radial-gradient(
+        circle at 49.77% 0%,
+        theme("colors.yellow.50"),
+        transparent 2%
+      ),
+      radial-gradient(
+        circle at 14.38% 9.49%,
+        theme("colors.purple.50"),
+        transparent 20%
+      ),
+      radial-gradient(
+        circle at 84.84% 17.86%,
+        theme("colors.pink.50"),
+        transparent 20%
+      ),
+      radial-gradient(
+        circle at 0.42% 98.1%,
+        rgba(255, 255, 255, 0.8),
+        transparent 100%
+      ),
+      radial-gradient(circle at 99.79% 99.55%, #ffffff, transparent 100%),
+      radial-gradient(
+        circle at 0.36% 53.24%,
+        rgba(255, 255, 255, 0.8),
+        transparent 100%
+      ),
+      radial-gradient(
+        circle at 50% 50%,
+        theme("colors.white"),
+        theme("colors.white") 100%
+      );
+  }
+
   .container {
     @apply md:max-w-3xl xl:max-w-4xl 2xl:max-w-7xl md:mx-auto px-10 lg:px-0;
-  }
-
-  /* Playing around with the golden ratio */
-  .goldx {
-    @apply grid grid-cols-1 md:grid-cols-3;
-  }
-
-  .goldy {
-    @apply grid grid-cols-1;
   }
 }

@@ -1,14 +1,14 @@
 <nav 
   class="fixed top-16 left-0 md:top-0 md:left-28 bottom-0 right-0 z-20 bg-white h-screen"
-  :class="! isOpen ? '': ''"
+  :class="! isOpen ? '': 'md:flex md:justify-around md:flex-col'"
   :hidden="!isOpen" id="nav-list"
 >
   <h2 class="sr-only" id="nav-heading">Site navigation</h2>
-  <ul class="flex flex-col items-center md:flex-col gap-10 text-7xl md:text-9xl p-10 md:p-28">
+  <ul class="flex flex-col md:flex-col text-7xl md:text-9xl px-10 md:px-28 text-center divide-dotted divide-y-4 divide-blue-100">
     {% for item in navigation %}
-      <li>
+      <li class="flex w-full">
         <a
-          class="{{ 'bg-clip-text text-transparent bg-gradient-to-tr from-gray-800 to-purple-800' if page.url == item.route }} {{'text-gray-800' if page.url != item.route }} font-sans"
+          class="{{ 'bg-clip-text text-transparent bg-gradient-to-tr to-purple-500 from-blue-200' if page.url == item.route }} font-sans w-screen py-10 hover:no-underline hover:italic"
           href="{{ item.route }}"
         >
           {{ item.name }}
