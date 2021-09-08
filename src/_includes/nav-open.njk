@@ -3,11 +3,11 @@
   :hidden="!isOpen" id="nav-list"
 >
   <h2 class="sr-only" id="nav-heading">Site navigation</h2>
-  <ul class="flex flex-col text-5xl text-center divide-dotted divide-y-4 divide-blue-100">
+  <ul class="flex flex-col text-5xl text-center divide-double divide-y-4 divide-blue-100">
     {% for item in navigation %}
-      <li class="flex w-full">
+      <li class="flex w-full hover:bg-blue-50">
         <a
-          class="{{ 'bg-clip-text text-transparent bg-gradient-to-tr to-purple-500 from-blue-200' if page.url == item.route }} font-sans w-screen py-10 hover:no-underline hover:italic"
+          class="{{ 'bg-clip-text text-transparent bg-gradient-to-tr to-purple-500 from-blue-200' if page.url == item.route }} font-sans w-screen py-10 hover:animate-test"
           href="{{ item.route }}"
         >
           {{ item.name }}

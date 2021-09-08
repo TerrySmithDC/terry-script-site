@@ -35,6 +35,32 @@
         {{ content | safe }}
     {% endblock %}
   </article>
-    {% include 'footer.njk' %}
+  {% include 'footer.njk' %}
+  <svg class="hidden" xmlns="http://www.w3.org/2000/svg" version="1.1">
+    <defs>
+        <filter id="squiggly-0">
+            <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="0" />
+            <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="6" />
+        </filter>
+        <filter id="squiggly-1">
+            <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="1" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+        </filter>
+
+        <filter id="squiggly-2">
+            <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="2" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+        </filter>
+        <filter id="squiggly-3">
+            <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="3" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+        </filter>
+
+        <filter id="squiggly-4">
+            <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="4" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+        </filter>
+    </defs>
+</svg>
 </body>
 </html>

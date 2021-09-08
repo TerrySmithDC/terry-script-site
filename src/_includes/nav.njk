@@ -6,7 +6,7 @@
     {% for item in navigation %}
       <li class="">
         <a
-          class="{{ 'bg-clip-text text-transparent bg-gradient-to-tr to-purple-500 from-blue-200' if page.url == item.route }} font-sans"
+          class="{{ 'bg-clip-text text-transparent bg-gradient-to-tr to-purple-500 from-blue-200' if page.url == item.route }} font-sans hover:animate-test"
           href="{{ item.route }}"
         >
           {{ item.name }}

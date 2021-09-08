@@ -77,6 +77,22 @@ module.exports = {
         "gradient-radial-to-bl":
           "radial-gradient(90% 115% at 100% 0%, var(--tw-gradient-stops))",
       },
+      maxWidth: {
+        para: "70ch",
+      },
+      // https://codepen.io/lbebber/pen/KwGEQv?editors=1100
+      keyframes: {
+        wiggle: {
+          "0%": { filter: 'url("#squiggly-0")' },
+          "25%": { filter: 'url("#squiggly-1")' },
+          "50%": { filter: 'url("#squiggly-2")' },
+          "75%": { filter: 'url("#squiggly-3")' },
+          "100%": { filter: 'url("#squiggly-4")' },
+        },
+      },
+      animation: {
+        test: "wiggle 0.75s ease infinite",
+      },
     },
   },
   plugins: [
