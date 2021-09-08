@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Terry Smith's personal site, lead developer @codecov.">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1631069762106">
-  <script src="/assets/main.bundle.js?v=1631069762107" defer></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1631072535261">
+  <script src="/assets/main.bundle.js?v=1631072535261" defer></script>
   <title>Test | Terry Script</title>
   
   
@@ -15,38 +15,60 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-M4QKVMQ');</script>
   
+  <script>
+    function init() {
+      return {
+        isOpen: false
+      }
+    }
+  </script>
 </head>
-<body x-data="{ isOpen: false }" class=" bg-gradient-radial-custom" :class="! isOpen ? '': 'overflow-hidden'">
+<body x-data="init()" class=" bg-gradient-radial-custom" :class="! isOpen ? '': 'overflow-hidden'">
   
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QKVMQ"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   
   <header 
-  class="sticky md:fixed inset-0 md:inset-x-0 md:w-28 h-16 md:h-full flex md:flex-col justify-center md:justify-between items-center text-xl md:text-2xl bg-white border-r-0 md:border-r border-b md:border-b-0 border-solid border-blue-100 z-10"
-  :class="! isOpen ? '': ''"
+  class="sticky inset-x-0 top-0 h-16 flex justify-between items-center text-lg bg-white border-b border-solid border-blue-100 z-10 px-5 md:p-0"
 >
-  <svg class="hidden md:block absolute top-0 left-12" viewBox="0 0 75 150"><text class="stroke-current stroke-1 md:rotate-90" x="40" y="-1" text-anchor="start">Test</text></svh>
-  <div></div>
-  <span
-    class="cursor-pointer select-none text-4xl p-3 md:p-10"
+<div class="container">
+  <ul class="hidden md:flex justify-inbetween gap-4 list-none p-0">
+    
+      <li class="">
+        <a
+          class=" font-sans"
+          href="/"
+        >
+          Home
+        </a>
+      </li>
+    
+      <li class="">
+        <a
+          class="bg-clip-text text-transparent bg-gradient-to-tr to-purple-500 from-blue-200 font-sans"
+          href="/test/"
+        >
+          Test
+        </a>
+      </li>
+    
+  </ul>
+    <span
+    class="md:hidden cursor-pointer select-none text-4xl"
     :aria-expanded="isOpen"
     aria-controls="nav-list"
     @click="isOpen = !isOpen"
     x-text="isOpen ? '&#9932;' : '&#9776;'"
   ></span>
-  <div class="hidden md:flex flex-col justify-between gap-4 m-6 items-center">
-    <div class="bg-blue-200 h-12 w-12"></div>
-    <div class="bg-blue-300 h-12 w-12"></div>
   </div>
 </header>
 
   <nav 
-  class="fixed top-16 left-0 md:top-0 md:left-28 bottom-0 right-0 z-20 bg-white h-screen"
-  :class="! isOpen ? '': 'md:flex md:justify-around md:flex-col'"
+  class="fixed top-16 left-0-28 bottom-0 right-0 z-20 bg-white h-screen"
   :hidden="!isOpen" id="nav-list"
 >
   <h2 class="sr-only" id="nav-heading">Site navigation</h2>
-  <ul class="flex flex-col md:flex-col text-7xl md:text-9xl px-10 md:px-28 text-center divide-dotted divide-y-4 divide-blue-100">
+  <ul class="flex flex-col text-5xl text-center divide-dotted divide-y-4 divide-blue-100">
     
       <li class="flex w-full">
         <a
@@ -147,5 +169,8 @@
 
     
   </article>
+    <section class="bg-blue-900 text-blue-200 bold p-14 flex justify-around">
+  <p>Terry Smith © 2021</p>
+</section>
 </body>
 </html>
