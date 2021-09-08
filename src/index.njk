@@ -4,7 +4,7 @@
 {% extends "layout.njk" %}
 
 {% block body %}
-<section class="relative grid grid-cols-1 md:grid-cols-3 min-h-screen">
+<section class="relative grid grid-cols-1 md:grid-cols-3 min-h-hero">
   <div class="flex flex-col justify-center md:pl-28 col-span-3 md:col-span-2 p-10 md:p-0">
     <h1 class="first-letter:tracking-tighter bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">Hello, I'm Terry.</h1>
     <p class="font-sans">Under construction. I'm working on this in my spare time.</p>
@@ -17,8 +17,16 @@
     <p class="max-w-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.</p>
   </div>
   <div class="p-10 pb-28 lg:p-28">
-    <h4 class="first-letter:tracking-tighter bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">Another section</h4>
-    <p class="max-w-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.</p>
+    <h4 class="first-letter:tracking-tighter bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">Recent posts</h4>
+    <ul class="list-none">
+    {# Last 5 posts #}
+    {% set length = collections.post.length - 5 %} 
+    {%- for post in collections.post -%}
+    {% if (loop.index >= length) %}
+      <li><a href="/post/{{post.data.title | slug }}">{{ post.data.title }}</a></li>
+    {% endif %}
+    {%- endfor -%}
+    </ul>
   </div>
 </section>
 {% endblock %}
