@@ -1,6 +1,6 @@
 ---
 title: Test
-layout: layout.njk
+layout: layouts/main.njk
 ---
 
 <section class="container my-10 md:my-28">

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Terry Smith's personal site, lead developer @codecov.">
+  <link rel="stylesheet" href="{{ "/assets/main.bundle.css" | url | bust }}">
+  <script src="{{ "/assets/main.bundle.js" | url | bust }}" defer></script>
+  <title>{{ title }} | Terry Script</title>
+  <link rel="shortcut icon" type="image/jpg" href="./self.jpeg"/>
+  {% block head %}{% endblock %}
+  {% if env.prodMode %}
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-M4QKVMQ');</script>
+  {% endif %}
+</head>
+{% block body %}
+    {{ content | safe }}
+{% endblock %}
+</body>
+</html>
