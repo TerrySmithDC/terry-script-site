@@ -54,10 +54,6 @@
     @apply font-bold no-underline hover:underline;
   }
 
-  article {
-    @apply md:pl-28;
-  }
-
   blockquote {
     @apply border-solid border-blue-100 border-l-8 px-5 my-4;
   }
@@ -132,9 +128,5 @@
         theme("colors.white"),
         theme("colors.white") 100%
       );
-  }
-
-  .container {
-    @apply md:max-w-3xl xl:max-w-4xl 2xl:max-w-7xl md:mx-auto px-10 lg:px-0;
   }
 }

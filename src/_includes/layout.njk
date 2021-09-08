@@ -15,8 +15,15 @@
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-M4QKVMQ');</script>
   {% endif %}
+  <script>
+    function init() {
+      return {
+        isOpen: false
+      }
+    }
+  </script>
 </head>
-<body x-data="{ isOpen: false }" class="{{ 'debug-screens' if env.devMode }} bg-gradient-radial-custom" :class="! isOpen ? '': 'overflow-hidden'">
+<body x-data="init()" class="{{ 'debug-screens' if env.devMode }} bg-gradient-radial-custom" :class="! isOpen ? '': 'overflow-hidden'">
   {% if env.prodMode %}
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QKVMQ"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -28,5 +35,6 @@
         {{ content | safe }}
     {% endblock %}
   </article>
+    {% include 'footer.njk' %}
 </body>
 </html>

@@ -1,10 +1,9 @@
 <nav 
-  class="fixed top-16 left-0 md:top-0 md:left-28 bottom-0 right-0 z-20 bg-white h-screen"
-  :class="! isOpen ? '': 'md:flex md:justify-around md:flex-col'"
+  class="fixed top-16 left-0-28 bottom-0 right-0 z-20 bg-white h-screen"
   :hidden="!isOpen" id="nav-list"
 >
   <h2 class="sr-only" id="nav-heading">Site navigation</h2>
-  <ul class="flex flex-col md:flex-col text-7xl md:text-9xl px-10 md:px-28 text-center divide-dotted divide-y-4 divide-blue-100">
+  <ul class="flex flex-col text-5xl text-center divide-dotted divide-y-4 divide-blue-100">
     {% for item in navigation %}
       <li class="flex w-full">
         <a
