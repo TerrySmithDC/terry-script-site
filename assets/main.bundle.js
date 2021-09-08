@@ -2268,6 +2268,9 @@ Expression: "${expression}"
       return getDirectiveHandler(el, directive2);
     });
   }
+  function attributesOnly(attributes) {
+    return Array.from(attributes).map(toTransformedAttributes()).filter((attr) => !outNonAlpineAttributes(attr));
+  }
   var isDeferringHandlers = false;
   var directiveHandlerStacks = new Map();
   var currentHandlerStackKey = Symbol();
@@ -2321,7 +2324,8 @@ Expression: "${expression}"
     return { name, value };
   };
   var into = (i) => i;
-  function toTransformedAttributes(callback) {
+  function toTransformedAttributes(callback = () => {
+  }) {
     return ({ name, value }) => {
       let { name: newName, value: newValue } = attributeTransformers.reduce((carry, transform) => {
         return transform(carry);
@@ -2472,6 +2476,29 @@ Expression: "${expression}"
   function destroyTree(root) {
     walk(root, (el) => cleanupAttributes(el));
   }
+  function debounce(func, wait) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        func.apply(context, args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+      let context = this, args = arguments;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
   function plugin(callback) {
     callback(alpine_default);
   }
@@ -2558,7 +2585,7 @@ Expression: "${expression}"
     get raw() {
       return raw;
     },
-    version: "3.3.1",
+    version: "3.3.2",
     disableEffectScheduling,
     setReactivityEngine,
     addRootSelector,
@@ -2569,6 +2596,8 @@ Expression: "${expression}"
     interceptor,
     mutateDom,
     directive,
+    throttle,
+    debounce,
     evaluate,
     initTree,
     nextTick,
@@ -3144,12 +3173,12 @@ Expression: "${expression}"
     if (modifiers.includes("debounce")) {
       let nextModifier = modifiers[modifiers.indexOf("debounce") + 1] || "invalid-wait";
       let wait = isNumeric(nextModifier.split("ms")[0]) ? Number(nextModifier.split("ms")[0]) : 250;
-      handler3 = debounce(handler3, wait, this);
+      handler3 = debounce(handler3, wait);
     }
     if (modifiers.includes("throttle")) {
       let nextModifier = modifiers[modifiers.indexOf("throttle") + 1] || "invalid-wait";
       let wait = isNumeric(nextModifier.split("ms")[0]) ? Number(nextModifier.split("ms")[0]) : 250;
-      handler3 = throttle(handler3, wait, this);
+      handler3 = throttle(handler3, wait);
     }
     if (modifiers.includes("once")) {
       handler3 = wrapHandler(handler3, (next, e) => {
@@ -3167,29 +3196,6 @@ Expression: "${expression}"
   }
   function camelCase2(subject) {
     return subject.toLowerCase().replace(/-(\w)/g, (match, char) => char.toUpperCase());
-  }
-  function debounce(func, wait) {
-    var timeout;
-    return function() {
-      var context = this, args = arguments;
-      var later = function() {
-        timeout = null;
-        func.apply(context, args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  }
-  function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-      let context = this, args = arguments;
-      if (!inThrottle) {
-        func.apply(context, args);
-        inThrottle = true;
-        setTimeout(() => inThrottle = false, limit);
-      }
-    };
   }
   function isNumeric(subject) {
     return !Array.isArray(subject) && !isNaN(subject);
@@ -3365,6 +3371,12 @@ Expression: "${expression}"
         cleanupRunners.pop()();
       getBindings((bindings) => {
         let attributes = Object.entries(bindings).map(([name, value]) => ({ name, value }));
+        attributesOnly(attributes).forEach(({ name, value }, index) => {
+          attributes[index] = {
+            name: `x-bind:${name}`,
+            value: `"${value}"`
+          };
+        });
         directives(el, attributes, original).map((handle) => {
           cleanupRunners.push(handle.runCleanups);
           handle();
