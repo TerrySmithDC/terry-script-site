@@ -1,67 +1,36 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Terry Smith's personal site, lead developer @codecov.">
-  <link rel="stylesheet" href="{{ "/assets/main.bundle.css" | url | bust }}">
-  <script src="{{ "/assets/main.bundle.js" | url | bust }}" defer></script>
-  <title>{{ title }} | Terry Script</title>
-  <link rel="shortcut icon" type="image/jpg" href="./self.jpeg"/>
-  {% block head %}{% endblock %}
-  {% if env.prodMode %}
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-M4QKVMQ');</script>
-  {% endif %}
-  <script>
-    function init() {
-      return {
-        isOpen: false
-      }
-    }
-  </script>
-</head>
-<body x-data="init()" class="{{ 'debug-screens' if env.devMode }} bg-gradient-radial-custom" :class="! isOpen ? '': 'overflow-hidden'">
-  {% if env.prodMode %}
-  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QKVMQ"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-  {% endif %}
-  {% include 'nav.njk' %}
-  {% include 'nav-open.njk' %}
-  <article>
-    {% block body %}
-      {{ content | safe }}
-    {% endblock %}
-  </article>
-  {% include 'footer.njk' %}
-  <svg class="hidden" xmlns="http://www.w3.org/2000/svg" version="1.1">
-    <defs>
-        <filter id="squiggly-0">
-            <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="0" />
-            <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="6" />
-        </filter>
-        <filter id="squiggly-1">
-            <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="1" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
-        </filter>
+{% include "partials/htmlhead.njk" %}
+{% include 'nav.njk' %}
+{% include 'nav-open.njk' %}
+<article>
+  {% block body %}
+    {{ content | safe }}
+  {% endblock %}
+</article>
+{% include 'footer.njk' %}
+<svg class="hidden" xmlns="http://www.w3.org/2000/svg" version="1.1">
+  <defs>
+      <filter id="squiggly-0">
+          <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="0" />
+          <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="6" />
+      </filter>
+      <filter id="squiggly-1">
+          <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="1" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+      </filter>
 
-        <filter id="squiggly-2">
-            <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="2" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
-        </filter>
-        <filter id="squiggly-3">
-            <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="3" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
-        </filter>
+      <filter id="squiggly-2">
+          <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="2" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+      </filter>
+      <filter id="squiggly-3">
+          <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="3" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
+      </filter>
 
-        <filter id="squiggly-4">
-            <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="4" />
-            <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
-        </filter>
-    </defs>
+      <filter id="squiggly-4">
+          <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="4" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
+      </filter>
+  </defs>
 </svg>
-</body>
-</html>
+{% include "partials/htmlfoot.njk" %}
