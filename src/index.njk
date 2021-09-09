@@ -18,15 +18,7 @@
   </div>
   <div class="p-10 pb-28 lg:p-28">
     <h4 class="first-letter:tracking-tighter bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">Recent posts</h4>
-    <ul class="list-none">
-    {# Last 5 posts #}
-    {% set length = collections.post.length - 5 %} 
-    {%- for post in collections.post -%}
-    {% if (loop.index >= length) %}
-      <li><a href="/post/{{post.data.title | slug }}">{{ post.data.title }}</a></li>
-    {% endif %}
-    {%- endfor -%}
-    </ul>
+    {% include 'post-list.njk' %}
   </div>
 </section>
 {% endblock %}

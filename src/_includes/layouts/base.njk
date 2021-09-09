@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Terry Smith's personal site, lead developer @codecov.">
+  <title>{{ title or metadata.title }}</title>
+  <meta name="description" content="{{ description or metadata.description }}">
+  <link rel="shortcut icon" type="image/jpg" href="./self.jpeg"/>
   <link rel="stylesheet" href="{{ "/assets/main.bundle.css" | url | bust }}">
   <script src="{{ "/assets/main.bundle.js" | url | bust }}" defer></script>
-  <title>{{ title }} | Terry Script</title>
-  <link rel="shortcut icon" type="image/jpg" href="./self.jpeg"/>
   {% block head %}{% endblock %}
   {% if env.prodMode %}
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

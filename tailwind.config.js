@@ -29,9 +29,6 @@ module.exports = {
         sans: ["Raleway"],
         serif: ['"Playfair Display"'],
       },
-      height: {
-        nav: "7vh",
-      },
       minHeight: {
         hero: "90vh",
       },

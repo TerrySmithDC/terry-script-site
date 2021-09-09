@@ -1,0 +1,21 @@
+{
+    "title": "Terry Script",
+    "url": "https://terryscript.dev/",
+    "language": "en",
+    "description": "Terry Smith's personal site, lead developer @codecov.",
+    "feed": {
+      "subtitle": "Terry Smith's personal site, lead developer @codecov.",
+      "filename": "feed.xml",
+      "path": "/feed/feed.xml",
+      "id": "https://terryscript.dev/"
+    },
+    "jsonfeed": {
+      "path": "/feed/feed.json",
+      "url": "https://terryscript.dev/feed/feed.json"
+    },
+    "author": {
+      "name": "Terry Smith",
+      "email": "terry@designcollider.com",
+      "url": "https://terryscript.dev/about-me/"
+    }
+  }

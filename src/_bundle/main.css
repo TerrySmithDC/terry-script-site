@@ -9,7 +9,7 @@
   }
 
   body {
-    @apply font-sans text-dynamic tracking-wider text-blue-800;
+    @apply font-sans text-dynamic tracking-wider text-blue-800 bg-no-repeat;
   }
 
   h1,
