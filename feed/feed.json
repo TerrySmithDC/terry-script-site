@@ -1,0 +1,26 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "Terry Script",
+  "language": "en",
+  "home_page_url": "https://terryscript.dev/",
+  "feed_url": "https://terryscript.dev/feed/feed.json",
+  "description": "Terry Smith&#39;s personal site, lead developer @codecov.",
+  "author": {
+    "name": "Terry Smith",
+    "url": "https://terryscript.dev/about-me/"
+  },
+  "items": [{
+      "id": "https://terryscript.dev/posts/test2/",
+      "url": "https://terryscript.dev/posts/test2/",
+      "title": "Test 2",
+      "content_html": "<p>yada yada yada</p>\n",
+      "date_published": "2018-05-01T00:00:00Z"
+    },{
+      "id": "https://terryscript.dev/posts/test/",
+      "url": "https://terryscript.dev/posts/test/",
+      "title": "Test",
+      "content_html": "<section class=\"container my-10 md:my-28\">\n<h1>This is the Test page.</h1>\n<h2>This is the Test page.</h2>\n<h3>This is the Test page.</h3>\n<h4>This is the Test page.</h4>\n<h5>This is the Test page.</h5>\n<h6>This is the Test page.</h6>\n<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.</p>\n<h5>Text styles:</h5>\n<p>I just love <strong>bold text</strong>.</p>\n<p>Italicized text is the <em>cat's meow</em>.</p>\n<p>This text is <strong><em>really important</em></strong>.</p>\n<h5>Blockquotes</h5>\n<blockquote>\n<p>Dorothy followed her through many of the beautiful rooms in her castle.</p>\n</blockquote>\n<blockquote>\n<p>Dorothy followed her through many of the beautiful rooms in her castle.</p>\n<p>The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.</p>\n</blockquote>\n<blockquote>\n<p>Dorothy followed her through many of the beautiful rooms in her castle.</p>\n<blockquote>\n<p>The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.</p>\n</blockquote>\n</blockquote>\n<blockquote>\n<h6>The quarterly results look great!</h6>\n<ul>\n<li>\n<p>Revenue was off the chart.</p>\n</li>\n<li>\n<p>Profits were higher than ever.</p>\n<p><em>Everything</em> is going according to <strong>plan</strong>.</p>\n</li>\n</ul>\n</blockquote>\n<h5>Lists</h5>\n<h6>Ordered:</h6>\n<ol>\n<li>First item</li>\n<li>Second item</li>\n<li>Third item\n<ol>\n<li>Indented item</li>\n<li>Indented item</li>\n</ol>\n</li>\n<li>Fourth item</li>\n</ol>\n<h6>Unordered:</h6>\n<ul>\n<li>First item</li>\n<li>Second item</li>\n<li>Third item\n<ul>\n<li>Indented item</li>\n<li>Indented item</li>\n</ul>\n</li>\n<li>Fourth item</li>\n</ul>\n<h5>Code</h5>\n<p><code>const foo = 'bar'</code></p>\n<h5>Misc</h5>\n<hr />\n<p>My favorite search engine is <a href=\"https://duckduckgo.com/\">Duck Duck Go</a>.</p>\n<h5>TODO...</h5>\n<p><button>I do nothing!</button></p>\n<p><button disabled=\"\">I 'm disabled'!</button></p>\n<input placeholder=\"Input\" />\n</section>\n",
+      "date_published": "2018-05-01T00:00:00Z"
+    }
+  ]
+}

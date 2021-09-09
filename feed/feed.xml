@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+	<title>Terry Script</title>
+	<subtitle>Terry Smith&#39;s personal site, lead developer @codecov.</subtitle>
+	
+	<link href="https://terryscript.dev/feed/feed.xml" rel="self"/>
+	<link href="https://terryscript.dev/"/>
+	<updated>2018-05-01T00:00:00Z</updated>
+	<id>https://terryscript.dev/</id>
+	<author>
+		<name>Terry Smith</name>
+		<email>terry@designcollider.com</email>
+	</author>
+	
+	<entry>
+		<title>Test 2</title>
+		<link href="https://terryscript.dev/posts/test2/"/>
+		<updated>2018-05-01T00:00:00Z</updated>
+		<id>https://terryscript.dev/posts/test2/</id>
+		<content type="html">&lt;p&gt;yada yada yada&lt;/p&gt;
+</content>
+	</entry>
+	
+	<entry>
+		<title>Test</title>
+		<link href="https://terryscript.dev/posts/test/"/>
+		<updated>2018-05-01T00:00:00Z</updated>
+		<id>https://terryscript.dev/posts/test/</id>
+		<content type="html">&lt;section class=&quot;container my-10 md:my-28&quot;&gt;
+&lt;h1&gt;This is the Test page.&lt;/h1&gt;
+&lt;h2&gt;This is the Test page.&lt;/h2&gt;
+&lt;h3&gt;This is the Test page.&lt;/h3&gt;
+&lt;h4&gt;This is the Test page.&lt;/h4&gt;
+&lt;h5&gt;This is the Test page.&lt;/h5&gt;
+&lt;h6&gt;This is the Test page.&lt;/h6&gt;
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.&lt;/p&gt;
+&lt;h5&gt;Text styles:&lt;/h5&gt;
+&lt;p&gt;I just love &lt;strong&gt;bold text&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Italicized text is the &lt;em&gt;cat&#39;s meow&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;This text is &lt;strong&gt;&lt;em&gt;really important&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
+&lt;h5&gt;Blockquotes&lt;/h5&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Dorothy followed her through many of the beautiful rooms in her castle.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Dorothy followed her through many of the beautiful rooms in her castle.&lt;/p&gt;
+&lt;p&gt;The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Dorothy followed her through many of the beautiful rooms in her castle.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;h6&gt;The quarterly results look great!&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Revenue was off the chart.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Profits were higher than ever.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Everything&lt;/em&gt; is going according to &lt;strong&gt;plan&lt;/strong&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/blockquote&gt;
+&lt;h5&gt;Lists&lt;/h5&gt;
+&lt;h6&gt;Ordered:&lt;/h6&gt;
+&lt;ol&gt;
+&lt;li&gt;First item&lt;/li&gt;
+&lt;li&gt;Second item&lt;/li&gt;
+&lt;li&gt;Third item
+&lt;ol&gt;
+&lt;li&gt;Indented item&lt;/li&gt;
+&lt;li&gt;Indented item&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;Fourth item&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6&gt;Unordered:&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;First item&lt;/li&gt;
+&lt;li&gt;Second item&lt;/li&gt;
+&lt;li&gt;Third item
+&lt;ul&gt;
+&lt;li&gt;Indented item&lt;/li&gt;
+&lt;li&gt;Indented item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Fourth item&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5&gt;Code&lt;/h5&gt;
+&lt;p&gt;&lt;code&gt;const foo = &#39;bar&#39;&lt;/code&gt;&lt;/p&gt;
+&lt;h5&gt;Misc&lt;/h5&gt;
+&lt;hr /&gt;
+&lt;p&gt;My favorite search engine is &lt;a href=&quot;https://duckduckgo.com/&quot;&gt;Duck Duck Go&lt;/a&gt;.&lt;/p&gt;
+&lt;h5&gt;TODO...&lt;/h5&gt;
+&lt;p&gt;&lt;button&gt;I do nothing!&lt;/button&gt;&lt;/p&gt;
+&lt;p&gt;&lt;button disabled=&quot;&quot;&gt;I &#39;m disabled&#39;!&lt;/button&gt;&lt;/p&gt;
+&lt;input placeholder=&quot;Input&quot; /&gt;
+&lt;/section&gt;
+</content>
+	</entry>
+</feed>
