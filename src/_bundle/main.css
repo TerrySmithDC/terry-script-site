@@ -95,7 +95,7 @@
   }
 
   article {
-    @apply p-10 sm:p-0 min-h-full;
+    @apply p-10 md:p-0 min-h-full;
   }
 
   button,
