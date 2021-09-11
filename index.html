@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Terry Smith's personal site, lead developer @codecov.">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1631317159791">
-  <script src="/assets/main.bundle.js?v=1631317159791" defer></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1631318721236">
+  <script src="/assets/main.bundle.js?v=1631318721237" defer></script>
   <title>Terry Script</title>
   <link rel="shortcut icon" type="image/jpg" href="/self.jpeg"/>
   
@@ -20,7 +20,7 @@
 <body x-data="{ isOpen: false }" class=" bg-gradient-radial-custom" :class="! isOpen ? '': 'overflow-hidden'">
   
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QKVMQ"
-  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  height="0" width="0" class="hidden invisible"></iframe></noscript>
   
 <header 
   class="sticky inset-x-0 top-0 h-16 flex justify-between items-center text-lg bg-white border-b border-solid border-blue-100 z-10 px-5 md:p-0"
@@ -69,24 +69,21 @@
 
 <article>
   
-<section class="relative grid grid-cols-1 md:grid-cols-3 min-h-hero">
-  <div class="flex flex-col justify-center md:pl-28 col-span-3 md:col-span-2 p-10 md:p-0">
+<section class="container flex flex-col justify-center p-10 md:p-0 min-h-hero">
     <h1 class="first-letter:tracking-tighter bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">Hello, I'm Terry.</h1>
     <p class="font-sans">Under construction. I'm working on this in my spare time.</p>
-  </div>
-  <div style="clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%); " class="hidden md:block bg-gradient-to-br from-purple-300 via-pink-400 to-red-400"> </div>
 </section>
-<section class="lg:flex">
-  <div class="p-10 lg:p-28">
+<section class="container lg:flex">
+  <div class="p-10 lg:py-28">
     <h4 class="first-letter:tracking-tighter bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">Another section</h4>
     <p class="max-w-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.</p>
   </div>
-  <div class="p-10 pb-28 lg:p-28">
-    <h4 class="first-letter:tracking-tighter bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">Recent posts</h4>
-    <ul class="list-none">
+  <div class="p-10 pb-28 lg:py-28">
+    <h4 class="bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">Recent posts</h4>
+    <ul>
 
 
-    <li><a href="/posts/test/">Test</a></li>
+    <li><a href="/posts/test/">Style Guide</a></li>
 
     <li><a href="/posts/test2/">Test 2</a></li>
 </ul>
@@ -94,13 +91,13 @@
 </section>
 
 </article>
-<section style="clip-path: polygon(0 8%, 100% 0, 100% 100%, 0% 100%);" class="bg-blue-900 text-blue-200 bold text-dynamic py-10">
+<section class="bg-blue-900 text-blue-200 bold text-dynamic py-10 angled-top">
   <div class="container p-10 md:p-auto flex gap-8">
     <img class="rounded-full" alt="Pixel art of Terry" src="/self.jpeg" /> 
     <div class="flex flex-col gap-4 justify-center">
-      <p>Helping people write better code at <a href="https://codecov.io" target="_blank">codecov</a>.</p>
+      <p>Helping people write better code at <a href="https://codecov.io" target="_blank" rel="noreferrer">codecov</a>.</p>
       <p>Designed and developed by Terry Smith</p>
-      <span class="flex gap-4"><a href="https://twitter.com/DesignCollider" target="_blank">twitter</a><a href="https://github.com/TerrySmithDC" target="_blank">github</a></span>
+      <span class="flex gap-4"><a href="https://twitter.com/DesignCollider" target="_blank" rel="noreferrer">twitter</a><a href="https://github.com/TerrySmithDC" target="_blank">github</a></span>
       <p>© 2021</p>
     </div>
   </div>
@@ -108,25 +105,25 @@
 <svg class="hidden" xmlns="http://www.w3.org/2000/svg" version="1.1">
   <defs>
       <filter id="squiggly-0">
-          <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="0" />
+          <feTurbulence baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="0" />
           <feDisplacementMap id="displacement" in="SourceGraphic" in2="noise" scale="6" />
       </filter>
       <filter id="squiggly-1">
-          <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="1" />
+          <feTurbulence baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="1" />
           <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
       </filter>
 
       <filter id="squiggly-2">
-          <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="2" />
+          <feTurbulence baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="2" />
           <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
       </filter>
       <filter id="squiggly-3">
-          <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="3" />
+          <feTurbulence baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="3" />
           <feDisplacementMap in="SourceGraphic" in2="noise" scale="8" />
       </filter>
 
       <filter id="squiggly-4">
-          <feTurbulence id="turbulence" baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="4" />
+          <feTurbulence baseFrequency="0.6" numOctaves="5" type="fractalNoise" seed="4" />
           <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" />
       </filter>
   </defs>

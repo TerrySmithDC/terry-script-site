@@ -22,17 +22,17 @@
 	</entry>
 	
 	<entry>
-		<title>Test</title>
+		<title>Style Guide</title>
 		<link href="https://terryscript.dev/posts/test/"/>
 		<updated>2018-05-01T00:00:00Z</updated>
 		<id>https://terryscript.dev/posts/test/</id>
-		<content type="html">&lt;section class=&quot;container my-10 md:my-28&quot;&gt;
-&lt;h1&gt;This is the Test page.&lt;/h1&gt;
-&lt;h2&gt;This is the Test page.&lt;/h2&gt;
-&lt;h3&gt;This is the Test page.&lt;/h3&gt;
-&lt;h4&gt;This is the Test page.&lt;/h4&gt;
-&lt;h5&gt;This is the Test page.&lt;/h5&gt;
-&lt;h6&gt;This is the Test page.&lt;/h6&gt;
+		<content type="html">&lt;section class=&quot;container my-10 md:my-14&quot;&gt;
+&lt;h1&gt;This is the Style Guide page.&lt;/h1&gt;
+&lt;h2&gt;This is the Style Guide page.&lt;/h2&gt;
+&lt;h3&gt;This is the Style Guide page.&lt;/h3&gt;
+&lt;h4&gt;This is the Style Guide page.&lt;/h4&gt;
+&lt;h5&gt;This is the Style Guide page.&lt;/h5&gt;
+&lt;h6&gt;This is the Style Guide page.&lt;/h6&gt;
 &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.&lt;/p&gt;
 &lt;h5&gt;Text styles:&lt;/h5&gt;
 &lt;p&gt;I just love &lt;strong&gt;bold text&lt;/strong&gt;.&lt;/p&gt;
