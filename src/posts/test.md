@@ -1,12 +1,11 @@
 ---
-title: Test
+title: Style Guide
 description: This is a post on My Blog about agile frameworks.
 date: 2018-05-01
 tags: post
-layout: layouts/post.njk
 ---
 
-<section class="container my-10 md:my-28">
+<section class="container my-10 md:my-14">
 
 # This is the {{ title }} page.
 
