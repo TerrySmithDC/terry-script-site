@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Terry Smith's personal site, lead developer @codecov.">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1631332415848">
-  <script src="/assets/main.bundle.js?v=1631332415848" defer></script>
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1631364188060">
   <title>Test 2</title>
   <link rel="shortcut icon" type="image/jpg" href="/self.jpeg"/>
   
+  <script src="/assets/main.bundle.js?v=1631364188060" defer></script>
   
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -17,7 +17,7 @@
   })(window,document,'script','dataLayer','GTM-M4QKVMQ');</script>
   
 </head>
-<body x-data="{ isOpen: false }" class="" :class="! isOpen ? '': 'overflow-hidden'">
+<body x-data="global" class="" :class="! isOpen ? '': 'overflow-hidden'">
   
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-M4QKVMQ"
   height="0" width="0" class="hidden invisible"></iframe></noscript>
@@ -26,7 +26,8 @@
   :class="{ 'bg-opacity-100': isOpen, 'bg-opacity-80': !isOpen }"
   class="fixed inset-x-0 top-0 h-16 flex justify-between items-center text-lg bg-white border-b border-solid border-blue-100 z-10 px-5 md:p-0"
 >
-  <nav class="container">
+  <nav class="container" aria-labelledby="primary-navigation">
+    <h2 id="primary-navigation" class="sr-only">Site navigation</h2>
     <ul class="hidden md:flex justify-inbetween gap-4 list-none p-0 ">
       
         <li class="">
@@ -52,7 +53,7 @@
       class="md:hidden cursor-pointer select-none text-4xl"
       :aria-expanded="isOpen"
       aria-controls="nav-list"
-      @click="isOpen = !isOpen"
+      @click="toggleIsOpen"
       x-text="isOpen ? '&#9932;' : '&#9776;'"
     ></span>
   </nav>
@@ -61,8 +62,8 @@
 <nav 
   class="fixed top-16 left-0-28 bottom-0 right-0 z-20 bg-white h-screen"
   :hidden="!isOpen" id="nav-list"
+  aria-hidden="true"
 >
-  <h2 class="sr-only" id="nav-heading">Site navigation</h2>
   <ul class="flex flex-col text-5xl text-center divide-double divide-y-4 divide-blue-100">
     
       <li class="flex w-full hover:bg-blue-50">
@@ -89,12 +90,20 @@
 <article>
   
     
-<section class="container my-10 md:my-28">
-    <h1>Test 2</h1>
+<section class="my-10 md:my-28 blog">
+    <h1 class="pb-20">Test 2</h1>
 
-    <p>yada yada yada</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet est placerat, tincidunt turpis quis, tempor velit. Cras finibus varius enim, non tincidunt dui dapibus at. Curabitur ut sagittis odio. Aenean ac orci non quam tincidunt dignissim ac a urna. Pellentesque commodo tristique magna a elementum. Suspendisse euismod quam id placerat suscipit. Sed pretium fringilla ligula, in consequat est accumsan tempus. Mauris turpis metus, vehicula ut orci non, auctor tempor dolor. Cras molestie tortor et cursus luctus. Ut porttitor eros vitae dolor elementum porttitor eu id tellus. Aliquam aliquet magna nisl, quis suscipit nibh porta laoreet. Etiam euismod non leo eget blandit. Vestibulum mattis scelerisque mollis. Duis porta commodo sollicitudin. Duis mollis velit molestie mauris dignissim dignissim.</p>
+<p>Proin quam orci, malesuada auctor tempus vel, ornare non libero. Morbi at egestas felis. Nam quis risus euismod, vehicula nisl non, suscipit augue. Nullam risus orci, finibus non lorem vel, dignissim hendrerit tellus. Morbi id nisi in orci varius rhoncus. Fusce a sapien sodales, gravida augue sed, dignissim risus. Ut eget lectus maximus, ultrices purus in, bibendum velit. Praesent vel enim et purus imperdiet condimentum at sit amet purus. Nam et nisi vel turpis feugiat ornare. Proin lorem elit, sagittis in tempus non, iaculis eget nunc. Aenean eu enim sed nunc sagittis mollis. Aliquam orci ipsum, porttitor eu eleifend id, fringilla non justo. Aliquam accumsan viverra tortor. Integer non mattis ligula, eget imperdiet sapien.</p>
+<h2 id="rabble-rabble" class="group anchor-offset">
+  <span>Rabble Rabble</span>
+  <a class="transition duration-200 ease-in-out opacity-0 group-hover:opacity-100 " href="#rabble-rabble">#</a>
+</h2>
+<p>Etiam feugiat rhoncus quam, at accumsan velit accumsan ut. Sed ultrices elit vel tellus tincidunt, ac viverra erat finibus. Mauris vel laoreet nunc. Maecenas dapibus risus nec hendrerit pharetra. Nulla sollicitudin, arcu et accumsan ultrices, ex ligula imperdiet lectus, eu suscipit justo dui nec purus. Integer finibus sapien ut nibh sodales, suscipit convallis elit aliquet. Maecenas convallis justo a ligula suscipit consequat. Fusce volutpat consequat quam, in pulvinar urna malesuada in.</p>
+<p>Aliquam erat volutpat. Nullam condimentum sodales fermentum. Phasellus vitae vestibulum arcu. Donec auctor eleifend metus sed imperdiet. Duis non pulvinar justo. Ut neque enim, sodales maximus nisl sit amet, accumsan rhoncus dui. Nulla urna tellus, pellentesque ut vulputate et, scelerisque at metus. Nulla faucibus elit eu ex luctus ultrices. Curabitur interdum, nisl eget pretium fermentum, erat neque euismod risus, id gravida leo mauris et purus. Etiam ullamcorper viverra consequat. Duis mollis, massa non porttitor congue, leo risus commodo sapien, vel faucibus turpis odio ac nisi. Morbi ut ex sit amet metus euismod euismod ac ac odio. Vivamus placerat leo ac lorem sodales, sed placerat est facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed viverra interdum dui, ut mollis erat pharetra nec. Morbi porttitor, sem ut maximus euismod, sapien ipsum aliquet eros, ac fermentum ligula ante eu nunc.</p>
+<p>Vivamus at nisl nisl. Aliquam eget interdum velit. Donec mollis enim ac blandit dictum. Curabitur in eros dignissim turpis semper ullamcorper. Duis aliquet elementum pulvinar. Sed commodo suscipit turpis nec eleifend. Nam tristique pharetra nisl eget imperdiet. In convallis laoreet dui, eget egestas dui eleifend vitae. Morbi tellus dolor, convallis eget imperdiet a, malesuada ac magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In est odio, sagittis at orci at, posuere mollis turpis. Morbi porttitor lectus sit amet risus laoreet, ut bibendum nisl vulputate. Donec non efficitur dolor. Donec accumsan convallis risus non aliquet.</p>
 
-</container>
+</section>
 
 
   

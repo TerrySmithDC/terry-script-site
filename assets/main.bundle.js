@@ -3673,4 +3673,10 @@ Expression: "${expression}"
       }
     });
   });
+  module_default.data("global", () => ({
+    isOpen: false,
+    toggleIsOpen() {
+      this.isOpen = !this.isOpen;
+    }
+  }));
 })();
