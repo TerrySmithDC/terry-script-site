@@ -55,10 +55,6 @@
     @apply mb-6;
   }
 
-  .p-indent + p {
-    @apply indent;
-  }
-
   a {
     @apply font-bold no-underline hover:underline;
   }
@@ -143,7 +139,24 @@
       );
   }
 
+  .p-indent + p {
+    @apply indent;
+  }
+
   .angled-top {
     clip-path: polygon(0 8%, 100% 0, 100% 100%, 0% 100%);
   }
+}
+
+.blog {
+  @apply max-w-para mx-auto;
+}
+
+.blog > p {
+  @apply p-indent;
+}
+
+.anchor-offset::before {
+  @apply block h-20 -mt-20 invisible;
+  content: " ";
 }

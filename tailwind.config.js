@@ -101,5 +101,5 @@ module.exports = {
       addUtilities(textIndents);
     }),
   ],
-  purge: ["./src/**/*.{js,md,njk,svg}"],
+  purge: ["./src/**/*.{js,md,njk,svg}", "./.eleventy.js"],
 };

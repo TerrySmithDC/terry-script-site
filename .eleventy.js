@@ -25,6 +25,19 @@ module.exports = (config) => {
     return `${urlPart}?${params}`;
   });
 
+  // https://jouni.kantola.se/blog/2021-02-05/permalinks-for-eleventy-headings/#text-and-snippet-headings
+  config.addShortcode("anchor", (tag, text, classList = "") => {
+    const slug = config.getFilter("slug");
+    const id = slug(text).replace(/[^\w-]/g, "");
+
+    return `
+<${tag} id="${id}" class="group anchor-offset${classList && `${classList}`}">
+  <span>${text}</span>
+  <a class="transition duration-200 ease-in-out opacity-0 group-hover:opacity-100 " href="#${id}">#</a>
+</${tag}>
+    `;
+  });
+
   return {
     dir: {
       input: "src",
