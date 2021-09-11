@@ -9,7 +9,7 @@
   }
 
   body {
-    @apply font-sans text-dynamic tracking-wider text-blue-800 bg-no-repeat;
+    @apply font-sans text-dynamic tracking-wider text-blue-800 bg-no-repeat bg-gradient-radial-custom;
   }
 
   h1,
@@ -51,6 +51,10 @@
     @apply first-letter:text-dynamic-xl text-dynamic-lg tracking-tight;
   }
 
+  p {
+    @apply mb-6;
+  }
+
   .p-indent + p {
     @apply indent;
   }
@@ -65,7 +69,7 @@
 
   ol,
   ul {
-    @apply pl-6;
+    @apply pl-6 py-4;
   }
 
   ol {
@@ -92,6 +96,10 @@
 
   hr {
     @apply my-4;
+  }
+
+  article {
+    @apply p-10 sm:p-0;
   }
 
   button,

@@ -29,9 +29,6 @@ module.exports = {
         sans: ["Raleway"],
         serif: ['"Playfair Display"'],
       },
-      minHeight: {
-        hero: "90vh",
-      },
       fontSize: {
         dynamic: [
           calculateClamp(1, 1.4),
@@ -69,6 +66,14 @@ module.exports = {
           calculateClamp(4.5, 7),
           { lineHeight: calculateClamp(5.5, 8.75) },
         ],
+        hero: [
+          calculateClamp(5.5, 13),
+          { lineHeight: calculateClamp(7, 17.5) },
+        ],
+        "hero-lg": [
+          calculateClamp(6, 16),
+          { lineHeight: calculateClamp(5, 17.5) },
+        ],
       },
       backgroundImage: {
         "gradient-radial-to-tr":
@@ -82,19 +87,6 @@ module.exports = {
       },
       maxWidth: {
         para: "70ch",
-      },
-      // https://codepen.io/lbebber/pen/KwGEQv?editors=1100
-      keyframes: {
-        wiggle: {
-          "0%": { filter: 'url("#squiggly-0")' },
-          "25%": { filter: 'url("#squiggly-1")' },
-          "50%": { filter: 'url("#squiggly-2")' },
-          "75%": { filter: 'url("#squiggly-3")' },
-          "100%": { filter: 'url("#squiggly-4")' },
-        },
-      },
-      animation: {
-        test: "wiggle 0.75s ease infinite",
       },
     },
   },

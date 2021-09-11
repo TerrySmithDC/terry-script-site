@@ -1,1 +1,4 @@
-module.exports = [{ name: "Home", route: `/` }];
+module.exports = [
+  { name: "home", route: `/` },
+  { name: "posts", route: `/posts` },
+];

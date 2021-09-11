@@ -1,12 +1,13 @@
 <header 
-  class="sticky inset-x-0 top-0 h-16 flex justify-between items-center text-lg bg-white border-b border-solid border-blue-100 z-10 px-5 md:p-0"
+  :class="{ 'bg-opacity-100': isOpen, 'bg-opacity-80': !isOpen }"
+  class="fixed inset-x-0 top-0 h-16 flex justify-between items-center text-lg bg-white border-b border-solid border-blue-100 z-10 px-5 md:p-0"
 >
   <nav class="container">
-    <ul class="hidden md:flex justify-inbetween gap-4 list-none p-0">
+    <ul class="hidden md:flex justify-inbetween gap-4 list-none p-0 ">
       {% for item in navigation %}
         <li class="">
           <a
-            class="{{ 'bg-clip-text text-transparent bg-gradient-to-tr to-purple-500 from-blue-200' if page.url == item.route }} font-sans hover:animate-test text-dynamic"
+            class="{{ 'bold' if page.url == item.route }} font-sans text-dynamic"
             href="{{ item.route }}"
           >
             {{ item.name }}

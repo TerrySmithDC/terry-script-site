@@ -7,7 +7,7 @@
     {% for item in navigation %}
       <li class="flex w-full hover:bg-blue-50">
         <a
-          class="{{ 'bg-clip-text text-transparent bg-gradient-to-tr to-purple-500 from-blue-200' if page.url == item.route }} font-sans w-screen py-10 hover:animate-test"
+          class="{{ 'bg-clip-text text-transparent bg-gradient-to-tr to-purple-500 from-blue-200' if page.url == item.route }} font-sans w-screen py-10"
           href="{{ item.route }}"
         >
           {{ item.name }}

@@ -2,17 +2,22 @@
 {% extends "layouts/main.njk" %}
 
 {% block body %}
-<section class="container flex flex-col justify-center p-10 md:p-0 min-h-hero">
-    <h1 class="first-letter:tracking-tighter bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">Hello, I'm Terry.</h1>
-    <p class="font-sans">Under construction. I'm working on this in my spare time.</p>
+<section class="container flex flex-col justify-center min-h-screen	">
+  <h1 class="first-letter:tracking-tighter first-letter:text-hero-lg text-hero bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">
+    Hello, I'm Terry.
+  </h1>
+  <p class="text-dynamic-3xl align-text-top sm:-mt-10">Under construction.</p>
 </section>
-<section class="container lg:flex">
-  <div class="p-10 lg:py-28">
-    <h4 class="first-letter:tracking-tighter bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">Another section</h4>
-    <p class="max-w-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.</p>
+<section class="container lg:flex mb-28 xl:mb-72 flex flex-col xl:flex-row gap-10">
+  <div>
+    <h2 class="first-letter:tracking-tighter bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">
+      What's this?
+    </h2>
+    <p class="max-w-para">On a whim I decided I wanted a place to throw general tech writting and deep dives on niche tech. Often around graphics in the web but I also might write about work related topics or just talk about things that excited me.</p>
+    <p class="max-w-para">To make this site I have used <a href="https://www.11ty.dev/" target="_blank" rel="noreferrer">11ty.dev</a>, <a href="https://tailwindcss.com/" target="_blank" rel="noreferrer">tailwindcss</a>, a tiny amount of <a href="https://alpinejs.dev/" target="_blank" rel="noreferrer">alpine.js</a>. With something bare bones online I'll likely start doing some more interesting things like interactive canvases, css houdini, and maybe some <a href="https://greensock.com/" target="_blank" rel="noreferrer">Green Sock animations</a>.</p>
   </div>
-  <div class="p-10 pb-28 lg:py-28">
-    <h4 class="bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">Recent posts</h4>
+  <div>
+    <h2 class="bg-clip-text text-transparent bg-gradient-to-tr from-blue-800 to-purple-800">Recent posts</h2>
     {% include 'post-list.njk' %}
   </div>
 </section>
