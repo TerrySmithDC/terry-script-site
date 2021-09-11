@@ -1,8 +1,7 @@
 <ul>
 {# Last 5 posts #}
-{% set length = collections.post.length - 5 %} 
-{%- for post in collections.post -%}
-{% if (loop.index >= length) %}
+{%- for post in collections.post | reverse -%}
+{% if (loop.index <= 5) %}
     <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
 {% endif %}
 {%- endfor -%}
