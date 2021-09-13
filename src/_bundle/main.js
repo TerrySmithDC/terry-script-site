@@ -13,26 +13,12 @@ document.body.addEventListener("htmx:afterSwap", () => {
   Alpine.start();
 });
 
-// Basic Store Example in Alpine.
 window.addEventListener("alpine:initializing", () => {
-  Alpine.store("nav", {
+  Alpine.data("global", () => ({
     isOpen: false,
-    close() {
-      return (this.isOpen = false);
+
+    toggleIsOpen() {
+      this.isOpen = !this.isOpen;
     },
-    open() {
-      return (this.isOpen = true);
-    },
-    toggle() {
-      return (this.isOpen = !this.isOpen);
-    },
-  });
+  }));
 });
-
-Alpine.data("global", () => ({
-  isOpen: false,
-
-  toggleIsOpen() {
-    this.isOpen = !this.isOpen;
-  },
-}));
