@@ -67,11 +67,11 @@ module.exports = {
           { lineHeight: calculateClamp(5.5, 8.75) },
         ],
         hero: [
-          calculateClamp(5.5, 13),
-          { lineHeight: calculateClamp(7, 17.5) },
+          calculateClamp(4.5, 13),
+          { lineHeight: calculateClamp(5.5, 17.5) },
         ],
         "hero-lg": [
-          calculateClamp(6, 16),
+          calculateClamp(5, 16),
           { lineHeight: calculateClamp(5, 17.5) },
         ],
       },

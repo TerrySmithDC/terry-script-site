@@ -142,9 +142,19 @@
   .p-indent + p {
     @apply indent;
   }
+}
 
+@layer utilities {
   .angled-top {
     clip-path: polygon(0 8%, 100% 0, 100% 100%, 0% 100%);
+  }
+
+  .ratio-1-1 {
+    aspect-ratio: 1 / 1;
+  }
+
+  .ratio-16\9 {
+    aspect-ratio: 16 / 9;
   }
 }
 
