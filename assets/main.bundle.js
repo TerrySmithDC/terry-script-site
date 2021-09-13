@@ -2067,7 +2067,7 @@
   function closestDataStack(node) {
     if (node._x_dataStack)
       return node._x_dataStack;
-    if (node instanceof ShadowRoot) {
+    if (typeof ShadowRoot === "function" && node instanceof ShadowRoot) {
       return closestDataStack(node.host);
     }
     if (!node.parentNode) {
@@ -2408,7 +2408,7 @@ Expression: "${expression}"
     isHolding = true;
   }
   function walk(el, callback) {
-    if (el instanceof ShadowRoot) {
+    if (typeof ShadowRoot === "function" && el instanceof ShadowRoot) {
       Array.from(el.children).forEach((el2) => walk(el2, callback));
       return;
     }
@@ -2588,7 +2588,7 @@ Expression: "${expression}"
     get raw() {
       return raw;
     },
-    version: "3.3.2",
+    version: "3.3.3",
     disableEffectScheduling,
     setReactivityEngine,
     addRootSelector,
@@ -3334,7 +3334,12 @@ Expression: "${expression}"
   }
   directive("cloak", (el) => queueMicrotask(() => mutateDom(() => el.removeAttribute(prefix("cloak")))));
   addInitSelector(() => `[${prefix("init")}]`);
-  directive("init", skipDuringClone((el, { expression }) => !!expression.trim() && evaluate(el, expression, {}, false)));
+  directive("init", skipDuringClone((el, { expression }) => {
+    if (typeof expression === "string") {
+      return !!expression.trim() && evaluate(el, expression, {}, false);
+    }
+    return evaluate(el, expression, {}, false);
+  }));
   directive("text", (el, { expression }, { effect: effect3, evaluateLater: evaluateLater2 }) => {
     let evaluate2 = evaluateLater2(expression);
     effect3(() => {
