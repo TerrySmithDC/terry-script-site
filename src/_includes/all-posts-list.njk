@@ -1,6 +1,5 @@
 <ul>
-{# Last 5 posts #}
-{%- for post in collections.post -%}
+{%- for post in collections.post | reverse -%}
     <li><a href="{{ post.url | url }}">{{ post.data.title }}</a></li>
 {%- endfor -%}
 </ul>

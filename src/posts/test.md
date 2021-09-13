@@ -1,9 +1,8 @@
 ---
+date: Last Modified
 title: Style Guide
 description: This is a post on My Blog about agile frameworks.
 ---
-
-<section class="container my-10 md:my-14">
 
 # This is the {{ title }} page.
 
@@ -83,5 +82,3 @@ My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
 <button disabled>I 'm disabled'!</button>
 
 <input placeholder="Input" />
-
-</section>
