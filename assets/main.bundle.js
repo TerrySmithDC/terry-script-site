@@ -3660,23 +3660,11 @@ Expression: "${expression}"
     module_default.start();
   });
   window.addEventListener("alpine:initializing", () => {
-    module_default.store("nav", {
+    module_default.data("global", () => ({
       isOpen: false,
-      close() {
-        return this.isOpen = false;
-      },
-      open() {
-        return this.isOpen = true;
-      },
-      toggle() {
-        return this.isOpen = !this.isOpen;
+      toggleIsOpen() {
+        this.isOpen = !this.isOpen;
       }
-    });
+    }));
   });
-  module_default.data("global", () => ({
-    isOpen: false,
-    toggleIsOpen() {
-      this.isOpen = !this.isOpen;
-    }
-  }));
 })();

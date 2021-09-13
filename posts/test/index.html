@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Terry Smith's personal site, lead developer @codecov.">
-  <link rel="stylesheet" href="/assets/main.bundle.css?v=1631364188058">
+  <link rel="stylesheet" href="/assets/main.bundle.css?v=1631500986924">
   <title>Style Guide</title>
   <link rel="shortcut icon" type="image/jpg" href="/self.jpeg"/>
   
-  <script src="/assets/main.bundle.js?v=1631364188058" defer></script>
+  <script src="/assets/main.bundle.js?v=1631500986925" defer></script>
   
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -24,7 +24,7 @@
   
 <header 
   :class="{ 'bg-opacity-100': isOpen, 'bg-opacity-80': !isOpen }"
-  class="fixed inset-x-0 top-0 h-16 flex justify-between items-center text-lg bg-white border-b border-solid border-blue-100 z-10 px-5 md:p-0"
+  class="fixed inset-x-0 top-0 h-16 flex justify-between items-center text-lg bg-white border-b border-solid border-blue-100 z-20 px-5 md:p-0"
 >
   <nav class="container" aria-labelledby="primary-navigation">
     <h2 id="primary-navigation" class="sr-only">Site navigation</h2>
@@ -60,8 +60,15 @@
 </header>
 
 <nav 
-  class="fixed top-16 left-0-28 bottom-0 right-0 z-20 bg-white h-screen"
-  :hidden="!isOpen" id="nav-list"
+  class="fixed top-16 left-0-28 bottom-0 right-0 z-10 bg-white h-screen transition motion-reduce:transition-none motion-reduce:transform-none"
+  x-show="isOpen"
+  x-transition:enter="ease-out duration-300"
+  x-transition:enter-start="opacity-0 -translate-y-full"
+  x-transition:enter-end="opacity-100 translate-y-0"
+  x-transition:leave="ease-in duration-300"
+  x-transition:leave-start="opacity-100 translate-y-0"
+  x-transition:leave-end="opacity-0 -translate-y-full"
+  id="nav-list"
   aria-hidden="true"
 >
   <ul class="flex flex-col text-5xl text-center divide-double divide-y-4 divide-blue-100">
@@ -93,8 +100,7 @@
 <section class="my-10 md:my-28 blog">
     <h1 class="pb-20">Style Guide</h1>
 
-    <section class="container my-10 md:my-14">
-<h1>This is the Style Guide page.</h1>
+    <h1>This is the Style Guide page.</h1>
 <h2>This is the Style Guide page.</h2>
 <h3>This is the Style Guide page.</h3>
 <h4>This is the Style Guide page.</h4>
@@ -165,7 +171,6 @@
 <p><button>I do nothing!</button></p>
 <p><button disabled>I 'm disabled'!</button></p>
 <input placeholder="Input" />
-</section>
 
 </section>
 

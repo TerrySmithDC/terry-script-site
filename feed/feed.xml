@@ -5,108 +5,10 @@
 	
 	<link href="https://terryscript.dev/feed/feed.xml" rel="self"/>
 	<link href="https://terryscript.dev/"/>
-	<updated>2018-05-01T00:00:00Z</updated>
+	<updated>2021-09-13T02:43:06Z</updated>
 	<id>https://terryscript.dev/</id>
 	<author>
 		<name>Terry Smith</name>
 		<email>terry@designcollider.com</email>
 	</author>
-	
-	<entry>
-		<title>Test 2</title>
-		<link href="https://terryscript.dev/posts/test2/"/>
-		<updated>2018-05-01T00:00:00Z</updated>
-		<id>https://terryscript.dev/posts/test2/</id>
-		<content type="html">&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet est placerat, tincidunt turpis quis, tempor velit. Cras finibus varius enim, non tincidunt dui dapibus at. Curabitur ut sagittis odio. Aenean ac orci non quam tincidunt dignissim ac a urna. Pellentesque commodo tristique magna a elementum. Suspendisse euismod quam id placerat suscipit. Sed pretium fringilla ligula, in consequat est accumsan tempus. Mauris turpis metus, vehicula ut orci non, auctor tempor dolor. Cras molestie tortor et cursus luctus. Ut porttitor eros vitae dolor elementum porttitor eu id tellus. Aliquam aliquet magna nisl, quis suscipit nibh porta laoreet. Etiam euismod non leo eget blandit. Vestibulum mattis scelerisque mollis. Duis porta commodo sollicitudin. Duis mollis velit molestie mauris dignissim dignissim.&lt;/p&gt;
-&lt;p&gt;Proin quam orci, malesuada auctor tempus vel, ornare non libero. Morbi at egestas felis. Nam quis risus euismod, vehicula nisl non, suscipit augue. Nullam risus orci, finibus non lorem vel, dignissim hendrerit tellus. Morbi id nisi in orci varius rhoncus. Fusce a sapien sodales, gravida augue sed, dignissim risus. Ut eget lectus maximus, ultrices purus in, bibendum velit. Praesent vel enim et purus imperdiet condimentum at sit amet purus. Nam et nisi vel turpis feugiat ornare. Proin lorem elit, sagittis in tempus non, iaculis eget nunc. Aenean eu enim sed nunc sagittis mollis. Aliquam orci ipsum, porttitor eu eleifend id, fringilla non justo. Aliquam accumsan viverra tortor. Integer non mattis ligula, eget imperdiet sapien.&lt;/p&gt;
-&lt;h2 id=&quot;rabble-rabble&quot; class=&quot;group anchor-offset&quot;&gt;
-  &lt;span&gt;Rabble Rabble&lt;/span&gt;
-  &lt;a class=&quot;transition duration-200 ease-in-out opacity-0 group-hover:opacity-100 &quot; href=&quot;https://terryscript.dev/posts/test2/#rabble-rabble&quot;&gt;#&lt;/a&gt;
-&lt;/h2&gt;
-&lt;p&gt;Etiam feugiat rhoncus quam, at accumsan velit accumsan ut. Sed ultrices elit vel tellus tincidunt, ac viverra erat finibus. Mauris vel laoreet nunc. Maecenas dapibus risus nec hendrerit pharetra. Nulla sollicitudin, arcu et accumsan ultrices, ex ligula imperdiet lectus, eu suscipit justo dui nec purus. Integer finibus sapien ut nibh sodales, suscipit convallis elit aliquet. Maecenas convallis justo a ligula suscipit consequat. Fusce volutpat consequat quam, in pulvinar urna malesuada in.&lt;/p&gt;
-&lt;p&gt;Aliquam erat volutpat. Nullam condimentum sodales fermentum. Phasellus vitae vestibulum arcu. Donec auctor eleifend metus sed imperdiet. Duis non pulvinar justo. Ut neque enim, sodales maximus nisl sit amet, accumsan rhoncus dui. Nulla urna tellus, pellentesque ut vulputate et, scelerisque at metus. Nulla faucibus elit eu ex luctus ultrices. Curabitur interdum, nisl eget pretium fermentum, erat neque euismod risus, id gravida leo mauris et purus. Etiam ullamcorper viverra consequat. Duis mollis, massa non porttitor congue, leo risus commodo sapien, vel faucibus turpis odio ac nisi. Morbi ut ex sit amet metus euismod euismod ac ac odio. Vivamus placerat leo ac lorem sodales, sed placerat est facilisis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed viverra interdum dui, ut mollis erat pharetra nec. Morbi porttitor, sem ut maximus euismod, sapien ipsum aliquet eros, ac fermentum ligula ante eu nunc.&lt;/p&gt;
-&lt;p&gt;Vivamus at nisl nisl. Aliquam eget interdum velit. Donec mollis enim ac blandit dictum. Curabitur in eros dignissim turpis semper ullamcorper. Duis aliquet elementum pulvinar. Sed commodo suscipit turpis nec eleifend. Nam tristique pharetra nisl eget imperdiet. In convallis laoreet dui, eget egestas dui eleifend vitae. Morbi tellus dolor, convallis eget imperdiet a, malesuada ac magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In est odio, sagittis at orci at, posuere mollis turpis. Morbi porttitor lectus sit amet risus laoreet, ut bibendum nisl vulputate. Donec non efficitur dolor. Donec accumsan convallis risus non aliquet.&lt;/p&gt;
-</content>
-	</entry>
-	
-	<entry>
-		<title>Style Guide</title>
-		<link href="https://terryscript.dev/posts/test/"/>
-		<updated>2018-05-01T00:00:00Z</updated>
-		<id>https://terryscript.dev/posts/test/</id>
-		<content type="html">&lt;section class=&quot;container my-10 md:my-14&quot;&gt;
-&lt;h1&gt;This is the Style Guide page.&lt;/h1&gt;
-&lt;h2&gt;This is the Style Guide page.&lt;/h2&gt;
-&lt;h3&gt;This is the Style Guide page.&lt;/h3&gt;
-&lt;h4&gt;This is the Style Guide page.&lt;/h4&gt;
-&lt;h5&gt;This is the Style Guide page.&lt;/h5&gt;
-&lt;h6&gt;This is the Style Guide page.&lt;/h6&gt;
-&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus volutpat ut nunc ut porta. Vivamus ultrices tristique turpis, in accumsan nunc vestibulum non. Ut sed urna sit amet enim accumsan eleifend. Praesent sodales mi laoreet justo ultricies ullamcorper. Morbi dignissim felis neque, sodales elementum nulla interdum a. Pellentesque tincidunt porttitor nisl a iaculis. Vestibulum aliquam massa elit, eget semper lacus suscipit sit amet. Mauris ullamcorper vulputate urna a sollicitudin. Aenean id diam maximus, ultrices enim vitae, euismod lacus. Aliquam tristique porttitor risus sit amet mollis. Nullam vitae viverra felis.&lt;/p&gt;
-&lt;h5&gt;Text styles:&lt;/h5&gt;
-&lt;p&gt;I just love &lt;strong&gt;bold text&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;Italicized text is the &lt;em&gt;cat&#39;s meow&lt;/em&gt;.&lt;/p&gt;
-&lt;p&gt;This text is &lt;strong&gt;&lt;em&gt;really important&lt;/em&gt;&lt;/strong&gt;.&lt;/p&gt;
-&lt;h5&gt;Blockquotes&lt;/h5&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Dorothy followed her through many of the beautiful rooms in her castle.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Dorothy followed her through many of the beautiful rooms in her castle.&lt;/p&gt;
-&lt;p&gt;The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Dorothy followed her through many of the beautiful rooms in her castle.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;The Witch bade her clean the pots and kettles and sweep the floor and keep the fire fed with wood.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
-&lt;blockquote&gt;
-&lt;h6&gt;The quarterly results look great!&lt;/h6&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;Revenue was off the chart.&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Profits were higher than ever.&lt;/p&gt;
-&lt;p&gt;&lt;em&gt;Everything&lt;/em&gt; is going according to &lt;strong&gt;plan&lt;/strong&gt;.&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
-&lt;h5&gt;Lists&lt;/h5&gt;
-&lt;h6&gt;Ordered:&lt;/h6&gt;
-&lt;ol&gt;
-&lt;li&gt;First item&lt;/li&gt;
-&lt;li&gt;Second item&lt;/li&gt;
-&lt;li&gt;Third item
-&lt;ol&gt;
-&lt;li&gt;Indented item&lt;/li&gt;
-&lt;li&gt;Indented item&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;Fourth item&lt;/li&gt;
-&lt;/ol&gt;
-&lt;h6&gt;Unordered:&lt;/h6&gt;
-&lt;ul&gt;
-&lt;li&gt;First item&lt;/li&gt;
-&lt;li&gt;Second item&lt;/li&gt;
-&lt;li&gt;Third item
-&lt;ul&gt;
-&lt;li&gt;Indented item&lt;/li&gt;
-&lt;li&gt;Indented item&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Fourth item&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h5&gt;Code&lt;/h5&gt;
-&lt;p&gt;&lt;code&gt;const foo = &#39;bar&#39;&lt;/code&gt;&lt;/p&gt;
-&lt;h5&gt;Misc&lt;/h5&gt;
-&lt;hr /&gt;
-&lt;p&gt;My favorite search engine is &lt;a href=&quot;https://duckduckgo.com/&quot;&gt;Duck Duck Go&lt;/a&gt;.&lt;/p&gt;
-&lt;h5&gt;TODO...&lt;/h5&gt;
-&lt;p&gt;&lt;button&gt;I do nothing!&lt;/button&gt;&lt;/p&gt;
-&lt;p&gt;&lt;button disabled=&quot;&quot;&gt;I &#39;m disabled&#39;!&lt;/button&gt;&lt;/p&gt;
-&lt;input placeholder=&quot;Input&quot; /&gt;
-&lt;/section&gt;
-</content>
-	</entry>
 </feed>
