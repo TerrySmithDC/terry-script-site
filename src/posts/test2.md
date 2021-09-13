@@ -1,8 +1,6 @@
 ---
 title: Test 2
 description: This is a post on My Blog about agile frameworks.
-date: 2018-05-01
-tags: post
 ---
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sit amet est placerat, tincidunt turpis quis, tempor velit. Cras finibus varius enim, non tincidunt dui dapibus at. Curabitur ut sagittis odio. Aenean ac orci non quam tincidunt dignissim ac a urna. Pellentesque commodo tristique magna a elementum. Suspendisse euismod quam id placerat suscipit. Sed pretium fringilla ligula, in consequat est accumsan tempus. Mauris turpis metus, vehicula ut orci non, auctor tempor dolor. Cras molestie tortor et cursus luctus. Ut porttitor eros vitae dolor elementum porttitor eu id tellus. Aliquam aliquet magna nisl, quis suscipit nibh porta laoreet. Etiam euismod non leo eget blandit. Vestibulum mattis scelerisque mollis. Duis porta commodo sollicitudin. Duis mollis velit molestie mauris dignissim dignissim.

@@ -1,5 +1,6 @@
 {
   "tags": ["posts"],
   "layout": "layouts/post.njk",
-  "templateEngineOverride": ["njk","md"]
+  "templateEngineOverride": ["njk","md"],
+  "date": "Last Modified"
 }
