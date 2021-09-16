@@ -1,4 +1,8 @@
-{% set pageTitle = title + ' - ' + metadata.title %}
+{% if title %} 
+  {% set pageTitle = title + ' - ' + metadata.title %}
+{% else %}
+  {% set pageTitle = metadata.title %}
+{% endif %}
 
 {% if metadata.title === title %} 
   {% set pageTitle = title %}
