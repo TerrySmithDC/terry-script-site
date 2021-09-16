@@ -17,10 +17,8 @@
   h3,
   h4,
   h5,
-  h6,
-  ul,
-  ol {
-    @apply font-serif;
+  h6 {
+    @apply font-serif mb-6;
   }
 
   h1 {
@@ -65,7 +63,7 @@
 
   ol,
   ul {
-    @apply pl-6 py-4;
+    @apply pl-10 pb-6 list-outside;
   }
 
   ol {
@@ -83,7 +81,7 @@
   }
 
   ul {
-    @apply list-inside list-disc;
+    @apply list-disc;
   }
 
   nav ul {
@@ -100,7 +98,11 @@
 
   button,
   input {
-    @apply focus:outline-none m-1 focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 p-2 border-2 border-solid border-blue-300 text-blue-700 rounded-md placeholder-blue-500;
+    @apply focus:outline-none m-1 focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 py-3 px-4 bg-blue-700 hover:bg-blue-600 disabled:bg-blue-500 text-white placeholder-white;
+  }
+
+  input[type="checkbox"] {
+    @apply focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded;
   }
 }
 
@@ -162,9 +164,9 @@
   @apply max-w-para mx-auto;
 }
 
-.blog > p {
+/* .blog > p {
   @apply p-indent;
-}
+} */
 
 .anchor-offset::before {
   @apply block h-20 -mt-20 invisible;
