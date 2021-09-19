@@ -4,11 +4,11 @@
 >
   <nav class="container" aria-labelledby="primary-navigation">
     <h2 id="primary-navigation" class="sr-only">Site navigation</h2>
-    <ul class="hidden md:flex justify-inbetween gap-4 list-none p-0 ">
+    <ul class="hidden md:flex justify-inbetween gap-4 list-none p-0 m-0 items-center">
       {% for item in navigation %}
-        <li class="">
+        <li>
           <a
-            class="{{ 'bold' if page.url == item.route }} font-sans text-dynamic"
+            class="{{ 'bold' if page.url == item.route }} font-sans"
             href="{{ item.route }}"
           >
             {{ item.name }}
@@ -17,7 +17,7 @@
       {% endfor %}
     </ul>
     <span
-      class="md:hidden cursor-pointer select-none text-4xl"
+      class="md:hidden cursor-pointer select-none text-3xl"
       :aria-expanded="isOpen"
       aria-controls="nav-list"
       @click="toggleIsOpen"
