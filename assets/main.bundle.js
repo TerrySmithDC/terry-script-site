@@ -2604,7 +2604,7 @@ Expression: "${expression}"
     get raw() {
       return raw;
     },
-    version: "3.3.4",
+    version: "3.3.5",
     disableEffectScheduling,
     setReactivityEngine,
     addRootSelector,
@@ -2875,7 +2875,7 @@ Expression: "${expression}"
       };
   }
   window.Element.prototype._x_toggleAndCascadeWithTransitions = function(el, value, show, hide) {
-    let clickAwayCompatibleShow = show;
+    let clickAwayCompatibleShow = () => setTimeout(show);
     if (value) {
       el._x_transition ? el._x_transition.in(show) : clickAwayCompatibleShow();
       return;
@@ -3155,7 +3155,7 @@ Expression: "${expression}"
     return booleanAttributes.includes(attrName);
   }
   function attributeShouldntBePreservedIfFalsy(name) {
-    return !["aria-pressed", "aria-checked"].includes(name);
+    return !["aria-pressed", "aria-checked", "aria-expanded"].includes(name);
   }
   function on(el, event, modifiers, callback) {
     let listenerTarget = el;
