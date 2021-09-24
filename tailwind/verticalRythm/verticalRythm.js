@@ -1,10 +1,23 @@
 const plugin = require("tailwindcss/plugin");
 const { createStyles } = require("./utils");
 const pluginConfig = require("./config");
+const { reduce, assign } = require("lodash");
 
-module.exports = plugin(function verticalRythem({ addBase, config, theme }) {
+/*
+TODO: 
+- Add tests
+*/
+
+module.exports = plugin(function verticalRythem({
+  addComponents,
+  addBase,
+  config,
+  theme,
+  e,
+}) {
+  const customFactors = theme("factor", {});
   const {
-    ppr,
+    basePixel,
     baseSize,
     baseLineHeight,
     capHeight,
@@ -16,7 +29,7 @@ module.exports = plugin(function verticalRythem({ addBase, config, theme }) {
     unit,
   } = pluginConfig({ config, theme });
 
-  const styles = createStyles({
+  const defaultStyles = {
     baseSize,
     baseLineHeight,
     capHeight,
@@ -26,20 +39,54 @@ module.exports = plugin(function verticalRythem({ addBase, config, theme }) {
     createValue,
     scale,
     unit,
-  });
+  };
+
+  const defaultFactorStyles = createStyles(defaultStyles);
 
   addBase({
-    html: { fontSize: `${ppr}px`, lineHeight: baseLineHeight },
-    body: { fontSize: `${ppr}px`, lineHeight: baseLineHeight },
-    h1: styles(4),
-    h2: styles(3),
-    h3: styles(2),
-    h4: styles(1),
-    h5: styles(0),
-    h6: styles(-0.5),
-    p: styles(0),
-    p: styles(0),
-    ul: styles(0),
-    ol: styles(0),
+    html: { fontSize: `${basePixel}px`, lineHeight: baseLineHeight },
+    body: { fontSize: `${basePixel}px`, lineHeight: baseLineHeight },
   });
+
+  const factors = {
+    ".factor-xs": defaultFactorStyles(-1),
+    ".factor-sm": defaultFactorStyles(-0.5),
+    ".factor-base": defaultFactorStyles(0),
+    ".factor-lg": defaultFactorStyles(1),
+    ".factor-xl": defaultFactorStyles(2),
+    ".factor-2xl": defaultFactorStyles(3),
+    ".factor-3xl": defaultFactorStyles(4),
+    ".factor-4xl": defaultFactorStyles(5),
+  };
+
+  const generatedFactors = reduce(
+    customFactors,
+    function (
+      result,
+      [factor, { lineHeightMod, headerSpacingBefore, headerSpacingAfter }],
+      name
+    ) {
+      const customFactorStyles = assign(
+        {
+          baseSize,
+          baseLineHeight,
+          capHeight,
+          headerSpacingBefore,
+          headerSpacingAfter,
+          lineHeightMod,
+          createValue,
+          scale,
+          unit,
+        },
+        defaultStyles
+      );
+      return {
+        [`.${e(`factor-${name}`)}`]: createStyles(customFactorStyles)(factor),
+        ...result,
+      };
+    },
+    {}
+  );
+
+  addComponents({ ...factors, ...generatedFactors });
 });

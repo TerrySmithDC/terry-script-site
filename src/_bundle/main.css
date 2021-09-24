@@ -16,6 +16,15 @@
     @apply font-sans tracking-wider text-blue-800 bg-no-repeat bg-gradient-radial-custom;
   }
 
+  p,
+  a,
+  ol,
+  ul,
+  input,
+  button {
+    @apply factor-base;
+  }
+
   h1,
   h2,
   h3,
@@ -26,31 +35,31 @@
   }
 
   h1 {
-    @apply tracking-tight;
+    @apply factor-3xl tracking-tight;
   }
 
   h2 {
-    @apply tracking-tight;
+    @apply factor-2xl tracking-tight;
   }
 
   h3 {
-    @apply tracking-tight;
+    @apply factor-xl tracking-tight;
   }
 
   h4 {
-    @apply tracking-tight;
+    @apply factor-lg tracking-tight;
   }
 
   h5 {
-    @apply tracking-tight;
+    @apply factor-base tracking-tight;
   }
 
   h6 {
-    @apply tracking-tight;
+    @apply factor-sm tracking-tight;
   }
 
   h7 {
-    @apply tracking-tight;
+    @apply factor-xs tracking-tight;
   }
 
   a {

@@ -4,8 +4,6 @@ title: Style Guide
 description: This is a post on My Blog about agile frameworks.
 ---
 
-# This is the {{ title }} page.
-
 ## This is the {{ title }} page.
 
 ### This is the {{ title }} page.

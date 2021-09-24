@@ -5,7 +5,7 @@ module.exports = {
   darkMode: false,
   verticalRhythm: {
     mode: "dynamic",
-    clampMultiplier: 1.1,
+    clampMultiplier: 1.5,
     scale: "fifth",
     lineHeightMultiplier: 1.2,
   },
@@ -16,6 +16,15 @@ module.exports = {
     debugScreens: {
       position: ["bottom", "right"],
     },
+    // factor: {
+    //   custom: [
+    //     4,
+    //     {
+    //       lineHeightMod: 0.8,
+    //       headerSpacingAfter: 10,
+    //     },
+    //   ],
+    // },
     extend: {
       fontFamily: {
         sans: ["Raleway"],

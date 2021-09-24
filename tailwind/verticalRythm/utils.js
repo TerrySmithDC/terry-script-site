@@ -2,7 +2,7 @@ function toPrecision(num, precision = 3) {
   return num.toPrecision(precision);
 }
 
-function fontSizeFactor(scale, level = 0) {
+function fontSizeFactor({ scale, level = 0 }) {
   return Math.pow(scale, level);
 }
 
@@ -40,7 +40,7 @@ function createStyles({
 }) {
   return function styles(level) {
     const rhythmUnit = baseSize * baseLineHeight;
-    const fontSize = baseSize * fontSizeFactor(scale, level);
+    const fontSize = baseSize * fontSizeFactor({ scale, level });
     const unitsInSize = (fontSize + 0.001) / rhythmUnit;
     const lineHeight = rhythmUnit * unitsInSize * lineHeightMod;
     const shift = (lineHeight - fontSize * capHeight) / 2;

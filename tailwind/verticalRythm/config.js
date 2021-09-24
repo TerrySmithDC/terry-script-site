@@ -2,9 +2,9 @@ const { scales, easing } = require("./constants");
 const { basicValue, clampValue } = require("./utils");
 
 module.exports = function config({ config, theme }) {
-  const ppr = config("verticalRhythm.ppr") || 16;
-  const baseSize = config("verticalRhythm.base.size") || 1;
-  const baseLineHeight = config("verticalRhythm.base.lineHeight") || 1;
+  const basePixel = config("verticalRhythm.basePixel") || 16;
+  const baseSize = config("verticalRhythm.baseSize") || 1;
+  const baseLineHeight = config("verticalRhythm.baseLineHeight") || 1;
   const unit = config("verticalRhythm.unit") || "rem";
   const capHeight = config("verticalRhythm.capHeight") || 0.68;
   const headerSpacingBefore =
@@ -13,12 +13,20 @@ module.exports = function config({ config, theme }) {
   const lineHeightMod = config("verticalRhythm.lineHeightMultiplier") || 1;
   const clampMultiplier = config("verticalRhythm.clampMultiplier") || 2;
 
-  const minScreen = theme("screens.md").slice(0, -2); // theme() returns a px value so we strip the px
-  const maxScreen = theme("screens.2xl").slice(0, -2);
+  const minScreen =
+    config("verticalRhythm.clampMin") || theme("screens.md").slice(0, -2); // theme() returns a px value so we strip the px
+  const maxScreen =
+    config("verticalRhythm.clampMax") || theme("screens.2xl").slice(0, -2);
 
   const createValue =
     config("verticalRhythm.mode") === "dynamic"
-      ? clampValue({ minScreen, maxScreen, clampMultiplier, ppr, unit })
+      ? clampValue({
+          minScreen,
+          maxScreen,
+          clampMultiplier,
+          ppr: basePixel,
+          unit,
+        })
       : basicValue({ unit });
 
   let scale = scales["major third"]; // Default
@@ -37,7 +45,7 @@ module.exports = function config({ config, theme }) {
     lineHeightMod,
     createValue,
     scale,
-    ppr,
+    basePixel,
     unit,
   };
 };
