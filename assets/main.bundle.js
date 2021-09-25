@@ -1953,8 +1953,10 @@
     if (!el._x_attributeCleanups)
       return;
     Object.entries(el._x_attributeCleanups).forEach(([name, value]) => {
-      (names === void 0 || names.includes(name)) && value.forEach((i) => i());
-      delete el._x_attributeCleanups[name];
+      if (names === void 0 || names.includes(name)) {
+        value.forEach((i) => i());
+        delete el._x_attributeCleanups[name];
+      }
     });
   }
   var observer = new MutationObserver(onMutate);
@@ -1964,6 +1966,7 @@
     currentlyObserving = true;
   }
   function stopObservingMutations() {
+    flushObserver();
     observer.disconnect();
     currentlyObserving = false;
   }
@@ -1986,13 +1989,26 @@
   function mutateDom(callback) {
     if (!currentlyObserving)
       return callback();
-    flushObserver();
     stopObservingMutations();
     let result = callback();
     startObservingMutations();
     return result;
   }
+  var isCollecting = false;
+  var deferredMutations = [];
+  function deferMutations() {
+    isCollecting = true;
+  }
+  function flushAndStopDeferringMutations() {
+    isCollecting = false;
+    onMutate(deferredMutations);
+    deferredMutations = [];
+  }
   function onMutate(mutations) {
+    if (isCollecting) {
+      deferredMutations = deferredMutations.concat(mutations);
+      return;
+    }
     let addedNodes = [];
     let removedNodes = [];
     let addedAttributes = new Map();
@@ -2586,10 +2602,12 @@ Expression: "${expression}"
     get raw() {
       return raw;
     },
-    version: "3.4.0",
+    version: "3.4.1",
+    flushAndStopDeferringMutations,
     disableEffectScheduling,
     setReactivityEngine,
     addRootSelector,
+    deferMutations,
     mapAttributes,
     evaluateLater,
     setEvaluator,
