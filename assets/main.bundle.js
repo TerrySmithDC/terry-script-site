@@ -2089,7 +2089,7 @@
     return closestDataStack(node.parentNode);
   }
   function mergeProxies(objects) {
-    return new Proxy({}, {
+    let thisProxy = new Proxy({}, {
       ownKeys: () => {
         return Array.from(new Set(objects.flatMap((i) => Object.keys(i))));
       },
@@ -2097,7 +2097,32 @@
         return objects.some((obj) => obj.hasOwnProperty(name));
       },
       get: (target, name) => {
-        return (objects.find((obj) => obj.hasOwnProperty(name)) || {})[name];
+        return (objects.find((obj) => {
+          if (obj.hasOwnProperty(name)) {
+            let descriptor = Object.getOwnPropertyDescriptor(obj, name);
+            if (descriptor.get && descriptor.get._x_alreadyBound || descriptor.set && descriptor.set._x_alreadyBound) {
+              return true;
+            }
+            if ((descriptor.get || descriptor.set) && descriptor.enumerable) {
+              let getter = descriptor.get;
+              let setter = descriptor.set;
+              let property = descriptor;
+              getter = getter && getter.bind(thisProxy);
+              setter = setter && setter.bind(thisProxy);
+              if (getter)
+                getter._x_alreadyBound = true;
+              if (setter)
+                setter._x_alreadyBound = true;
+              Object.defineProperty(obj, name, {
+                ...property,
+                get: getter,
+                set: setter
+              });
+            }
+            return true;
+          }
+          return false;
+        }) || {})[name];
       },
       set: (target, name, value) => {
         let closestObjectWithKey = objects.find((obj) => obj.hasOwnProperty(name));
@@ -2109,6 +2134,7 @@
         return true;
       }
     });
+    return thisProxy;
   }
   function initInterceptors(data2) {
     let isObject = (val) => typeof val === "object" && !Array.isArray(val) && val !== null;
@@ -2493,182 +2519,6 @@ Expression: "${expression}"
   function destroyTree(root) {
     walk(root, (el) => cleanupAttributes(el));
   }
-  function debounce(func, wait) {
-    var timeout;
-    return function() {
-      var context = this, args = arguments;
-      var later = function() {
-        timeout = null;
-        func.apply(context, args);
-      };
-      clearTimeout(timeout);
-      timeout = setTimeout(later, wait);
-    };
-  }
-  function throttle(func, limit) {
-    let inThrottle;
-    return function() {
-      let context = this, args = arguments;
-      if (!inThrottle) {
-        func.apply(context, args);
-        inThrottle = true;
-        setTimeout(() => inThrottle = false, limit);
-      }
-    };
-  }
-  function plugin(callback) {
-    callback(alpine_default);
-  }
-  var stores = {};
-  var isReactive = false;
-  function store(name, value) {
-    if (!isReactive) {
-      stores = reactive(stores);
-      isReactive = true;
-    }
-    if (value === void 0) {
-      return stores[name];
-    }
-    stores[name] = value;
-    if (typeof value === "object" && value !== null && value.hasOwnProperty("init") && typeof value.init === "function") {
-      stores[name].init();
-    }
-  }
-  function getStores() {
-    return stores;
-  }
-  var isCloning = false;
-  function skipDuringClone(callback) {
-    return (...args) => isCloning || callback(...args);
-  }
-  function clone(oldEl, newEl) {
-    newEl._x_dataStack = oldEl._x_dataStack;
-    isCloning = true;
-    dontRegisterReactiveSideEffects(() => {
-      cloneTree(newEl);
-    });
-    isCloning = false;
-  }
-  function cloneTree(el) {
-    let hasRunThroughFirstEl = false;
-    let shallowWalker = (el2, callback) => {
-      walk(el2, (el3, skip) => {
-        if (hasRunThroughFirstEl && isRoot(el3))
-          return skip();
-        hasRunThroughFirstEl = true;
-        callback(el3, skip);
-      });
-    };
-    initTree(el, shallowWalker);
-  }
-  function dontRegisterReactiveSideEffects(callback) {
-    let cache = effect;
-    overrideEffect((callback2, el) => {
-      let storedEffect = cache(callback2);
-      release(storedEffect);
-      return () => {
-      };
-    });
-    callback();
-    overrideEffect(cache);
-  }
-  var datas = {};
-  function data(name, callback) {
-    datas[name] = callback;
-  }
-  function injectDataProviders(obj, context) {
-    Object.entries(datas).forEach(([name, callback]) => {
-      Object.defineProperty(obj, name, {
-        get() {
-          return (...args) => {
-            return callback.bind(context)(...args);
-          };
-        },
-        enumerable: false
-      });
-    });
-    return obj;
-  }
-  var Alpine = {
-    get reactive() {
-      return reactive;
-    },
-    get release() {
-      return release;
-    },
-    get effect() {
-      return effect;
-    },
-    get raw() {
-      return raw;
-    },
-    version: "3.4.1",
-    flushAndStopDeferringMutations,
-    disableEffectScheduling,
-    setReactivityEngine,
-    addRootSelector,
-    deferMutations,
-    mapAttributes,
-    evaluateLater,
-    setEvaluator,
-    closestRoot,
-    interceptor,
-    mutateDom,
-    directive,
-    throttle,
-    debounce,
-    evaluate,
-    initTree,
-    nextTick,
-    prefix: setPrefix,
-    plugin,
-    magic,
-    store,
-    start,
-    clone,
-    data
-  };
-  var alpine_default = Alpine;
-  var import_reactivity9 = __toModule2(require_reactivity());
-  magic("nextTick", () => nextTick);
-  magic("dispatch", (el) => dispatch.bind(dispatch, el));
-  magic("watch", (el) => (key, callback) => {
-    let evaluate2 = evaluateLater(el, key);
-    let firstTime = true;
-    let oldValue;
-    effect(() => evaluate2((value) => {
-      let div = document.createElement("div");
-      div.dataset.throwAway = value;
-      if (!firstTime) {
-        queueMicrotask(() => {
-          callback(value, oldValue);
-          oldValue = value;
-        });
-      } else {
-        oldValue = value;
-      }
-      firstTime = false;
-    }));
-  });
-  magic("store", getStores);
-  magic("root", (el) => closestRoot(el));
-  magic("refs", (el) => {
-    if (el._x_refs_proxy)
-      return el._x_refs_proxy;
-    el._x_refs_proxy = mergeProxies(getArrayOfRefObject(el));
-    return el._x_refs_proxy;
-  });
-  function getArrayOfRefObject(el) {
-    let refObjects = [];
-    let currentEl = el;
-    while (currentEl) {
-      if (currentEl._x_refs)
-        refObjects.push(currentEl._x_refs);
-      currentEl = currentEl.parentNode;
-    }
-    return refObjects;
-  }
-  magic("el", (el) => el);
   function setClasses(el, value) {
     if (Array.isArray(value)) {
       return setClassesFromString(el, value.join(" "));
@@ -2858,8 +2708,7 @@ Expression: "${expression}"
           transition(el, setFunction, {
             during: this.enter.during,
             start: this.enter.start,
-            end: this.enter.end,
-            entering: true
+            end: this.enter.end
           }, before, after);
         },
         out(before = () => {
@@ -2868,8 +2717,7 @@ Expression: "${expression}"
           transition(el, setFunction, {
             during: this.leave.during,
             start: this.leave.start,
-            end: this.leave.end,
-            entering: false
+            end: this.leave.end
           }, before, after);
         }
       };
@@ -2918,7 +2766,7 @@ Expression: "${expression}"
       return;
     return parent._x_hidePromise ? parent : closestHide(parent);
   }
-  function transition(el, setFunction, { during, start: start2, end, entering } = {}, before = () => {
+  function transition(el, setFunction, { during, start: start2, end } = {}, before = () => {
   }, after = () => {
   }) {
     if (el._x_transitioning)
@@ -2946,9 +2794,9 @@ Expression: "${expression}"
         undoDuring();
         undoEnd();
       }
-    }, entering);
+    });
   }
-  function performTransition(el, stages, entering) {
+  function performTransition(el, stages) {
     let interrupted, reachedBefore, reachedEnd;
     let finish = once(() => {
       mutateDom(() => {
@@ -2977,8 +2825,7 @@ Expression: "${expression}"
         ;
         finish();
       }),
-      finish,
-      entering
+      finish
     };
     mutateDom(() => {
       stages.start();
@@ -3030,6 +2877,184 @@ Expression: "${expression}"
     }
     return rawValue;
   }
+  function debounce(func, wait) {
+    var timeout;
+    return function() {
+      var context = this, args = arguments;
+      var later = function() {
+        timeout = null;
+        func.apply(context, args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
+  function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+      let context = this, args = arguments;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
+  function plugin(callback) {
+    callback(alpine_default);
+  }
+  var stores = {};
+  var isReactive = false;
+  function store(name, value) {
+    if (!isReactive) {
+      stores = reactive(stores);
+      isReactive = true;
+    }
+    if (value === void 0) {
+      return stores[name];
+    }
+    stores[name] = value;
+    if (typeof value === "object" && value !== null && value.hasOwnProperty("init") && typeof value.init === "function") {
+      stores[name].init();
+    }
+  }
+  function getStores() {
+    return stores;
+  }
+  var isCloning = false;
+  function skipDuringClone(callback) {
+    return (...args) => isCloning || callback(...args);
+  }
+  function clone(oldEl, newEl) {
+    newEl._x_dataStack = oldEl._x_dataStack;
+    isCloning = true;
+    dontRegisterReactiveSideEffects(() => {
+      cloneTree(newEl);
+    });
+    isCloning = false;
+  }
+  function cloneTree(el) {
+    let hasRunThroughFirstEl = false;
+    let shallowWalker = (el2, callback) => {
+      walk(el2, (el3, skip) => {
+        if (hasRunThroughFirstEl && isRoot(el3))
+          return skip();
+        hasRunThroughFirstEl = true;
+        callback(el3, skip);
+      });
+    };
+    initTree(el, shallowWalker);
+  }
+  function dontRegisterReactiveSideEffects(callback) {
+    let cache = effect;
+    overrideEffect((callback2, el) => {
+      let storedEffect = cache(callback2);
+      release(storedEffect);
+      return () => {
+      };
+    });
+    callback();
+    overrideEffect(cache);
+  }
+  var datas = {};
+  function data(name, callback) {
+    datas[name] = callback;
+  }
+  function injectDataProviders(obj, context) {
+    Object.entries(datas).forEach(([name, callback]) => {
+      Object.defineProperty(obj, name, {
+        get() {
+          return (...args) => {
+            return callback.bind(context)(...args);
+          };
+        },
+        enumerable: false
+      });
+    });
+    return obj;
+  }
+  var Alpine = {
+    get reactive() {
+      return reactive;
+    },
+    get release() {
+      return release;
+    },
+    get effect() {
+      return effect;
+    },
+    get raw() {
+      return raw;
+    },
+    version: "3.4.2",
+    flushAndStopDeferringMutations,
+    disableEffectScheduling,
+    setReactivityEngine,
+    addRootSelector,
+    deferMutations,
+    mapAttributes,
+    evaluateLater,
+    setEvaluator,
+    closestRoot,
+    interceptor,
+    transition,
+    setStyles,
+    mutateDom,
+    directive,
+    throttle,
+    debounce,
+    evaluate,
+    initTree,
+    nextTick,
+    prefix: setPrefix,
+    plugin,
+    magic,
+    store,
+    start,
+    clone,
+    data
+  };
+  var alpine_default = Alpine;
+  var import_reactivity9 = __toModule2(require_reactivity());
+  magic("nextTick", () => nextTick);
+  magic("dispatch", (el) => dispatch.bind(dispatch, el));
+  magic("watch", (el) => (key, callback) => {
+    let evaluate2 = evaluateLater(el, key);
+    let firstTime = true;
+    let oldValue;
+    effect(() => evaluate2((value) => {
+      let div = document.createElement("div");
+      div.dataset.throwAway = value;
+      if (!firstTime) {
+        queueMicrotask(() => {
+          callback(value, oldValue);
+          oldValue = value;
+        });
+      } else {
+        oldValue = value;
+      }
+      firstTime = false;
+    }));
+  });
+  magic("store", getStores);
+  magic("root", (el) => closestRoot(el));
+  magic("refs", (el) => {
+    if (el._x_refs_proxy)
+      return el._x_refs_proxy;
+    el._x_refs_proxy = mergeProxies(getArrayOfRefObject(el));
+    return el._x_refs_proxy;
+  });
+  function getArrayOfRefObject(el) {
+    let refObjects = [];
+    let currentEl = el;
+    while (currentEl) {
+      if (currentEl._x_refs)
+        refObjects.push(currentEl._x_refs);
+      currentEl = currentEl.parentNode;
+    }
+    return refObjects;
+  }
+  magic("el", (el) => el);
   var handler = () => {
   };
   handler.inline = (el, { modifiers }, { cleanup }) => {
@@ -3170,6 +3195,8 @@ Expression: "${expression}"
       event = camelCase2(event);
     if (modifiers.includes("passive"))
       options.passive = true;
+    if (modifiers.includes("capture"))
+      options.capture = true;
     if (modifiers.includes("window"))
       listenerTarget = window;
     if (modifiers.includes("document"))
