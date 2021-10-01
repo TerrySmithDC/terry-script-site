@@ -47,7 +47,7 @@ module.exports = {
   },
   plugins: [
     require("tailwindcss-debug-screens"),
-    require("./tailwind/verticalRythm"),
+    require("tailwindcss-vertical-rythm"),
   ],
   purge: ["./src/**/*.{js,md,njk,svg}", "./.eleventy.js"],
 };
