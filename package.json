@@ -43,7 +43,7 @@
     "postcss-font-magician": "^3.0.0",
     "postcss-import": "^14.0.0",
     "tailwindcss": "^2.2.16",
-    "tailwindcss-debug-screens": "^2.1.0",
+    "tailwindcss-debug-screens": "^2.2.1",
     "tailwindcss-vertical-rythm": "0.0.1"
   }
 }
